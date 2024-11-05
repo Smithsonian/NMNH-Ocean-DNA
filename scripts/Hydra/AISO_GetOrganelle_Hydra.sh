@@ -1,17 +1,17 @@
 #!/bin/bash
 #$ -N GetOrganelle
-#$ -o system.out
-#$ -e error.out
+#$ -o GetOrganelle.out
+#$ -e GetOrganelle.err
 #$ -j y
 #$ -terse
 #$ -notify
-#$ -q sThC.q
 #$ -pe mthread 6
-#$ -l mres=12G,h_data=2G,h_vmem=2G 
+#$ -q sThM.q
+#$ -l mres=432G,h_data=72G,h_vmem=72G,himem
 #$ -S /bin/bash
 #$ -cwd
 
-## ABOUT ################################################
+# ABOUT ################################################
 # author: Dan macguigan
 # contact: macguigand@si.edu
 #
@@ -21,36 +21,36 @@
 # get_organelle_from_reads.py from anywhere)
 # 
 # To install GetOrganelle on Hydra:
-# conda create --name GetOrganelle bioconda::getorganelle
-# conda activate GetOrganelle
-# get_organelle_from_reads.py -h 
+### conda create --name GetOrganelle bioconda::getorganelle
+### conda activate GetOrganelle
+### get_organelle_from_reads.py -h 
 # 
 # More GetOrganelle details here:
 # https://github.com/Kinggerm/GetOrganelle
 #
 # Example usage:
 # [manually modify variables in the INPUTS section] 
-# qsub AISO_GetOrganelle_Hydra.sh
-#
-## INPUTS ################################################
+# run "qsub AISO_GetOrganelle_Hydra.sh"
+
+# INPUTS ################################################
 
 # main working directory, output will be written here
-WORD_DIR="/home/macguigand/pool/GetOrganelle_test"
+WD="/pool/public/genomics/macguigand/GetOrganelle_invert_test/Cnidaria/Cnidaria-Pandea-hydroids-1525150"
 
 # sample info
-SAMPLE_ID="SRR22396940" # could be anything, no spaces
-R1="/pool/public/genomics/macguigand/GetOrganelle_test/SRR22396940_preprocess_R1.fastq.gz"
-R2="/pool/public/genomics/macguigand/GetOrganelle_test/SRR22396940_preprocess_R2.fastq.gz"
+SAMPLE_ID="Cnidaria-Pandea-hydroids-1525150" # could be anything, no spaces
+R1="/pool/public/genomics/macguigand/GetOrganelle_invert_test/Cnidaria/Cnidaria-Pandea-hydroids-1525150/rawData/Cnidaria-Pandea-hydroids-1525150_S20_R1_001.fastq.gz"
+R2="/pool/public/genomics/macguigand/GetOrganelle_invert_test/Cnidaria/Cnidaria-Pandea-hydroids-1525150/rawData/Cnidaria-Pandea-hydroids-1525150_S20_R2_001.fastq.gz"
 
 # reference databases, see link below for more details
 # https://github.com/Kinggerm/GetOrganelle/wiki/FAQ#how-to-assemble-a-target-organelle-genome-using-my-own-reference
-SEED_DB="/full/path/to/your/seed_database.fasta"
-LABEL_DB="/full/path/to/your/genes_database.fasta"
+SEED_DB="/home/macguigand/pool/GetOrganelle_invert_test/Cnidaria/Cnidaria-Pandea-hydroids-1525150/cnidaria_mitochondrion_max50_2024-11-04_refDBs/seed.fasta"
+LABEL_DB="/home/macguigand/pool/GetOrganelle_invert_test/Cnidaria/Cnidaria-Pandea-hydroids-1525150/cnidaria_mitochondrion_max50_2024-11-04_refDBs/gene.fasta"
 
 THREADS=6 # number of threads/CPUs, must match "-pe mthread" in the UGE block above
 
 
-## SCRIPT ################################################
+# SCRIPT ################################################
 
 cd ${WD}
 
@@ -72,13 +72,14 @@ get_organelle_from_reads.py \
  -k '21,45,65,85,105,115' \
  --larger-auto-ws \
  --expected-max-size 20000 \
- --target-genome-size 16500
+ --target-genome-size 16500 \
+ --which-spades /home/macguigand/SPAdes-4.0.0-Linux/bin # NEED TO FIX
  
 # summarize results
 summary_get_organelle_output.py ${SAMPLE_ID}/assemble -o ${SAMPLE_ID}/assemble/${SAMPLE_ID}_summary.txt
 
 
-## OUTPUT ################################################
+# OUTPUT ################################################
 echo ""
 echo "GetOrganlle COMPLETE!"
 echo "assembly located in ${SAMPLE_ID}/assemble"
