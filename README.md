@@ -1,7 +1,11 @@
 # SI-Ocean-DNA
 Smithsonian NMNH Ocean DNA - data management and analysis
 
-## Sequence Data File Naming Best Practices
+## Raw Sequence Data -- Best Practices for File Names
+
+
+- 
+Use delimeter (underscore? period? dash?) t
 
 ## Data Management Guide
 ```mermaid
