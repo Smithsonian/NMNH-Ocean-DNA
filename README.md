@@ -40,4 +40,12 @@ Unlimited storage. Incrementally backed up daily, fully backed up weekly.]
   end
   Store--Dan runs monthly backup-->XDrive
 
+  classDef process stroke:black,color:black,fill:#636363,stroke-dasharray: 5 5
+  classDef storage stroke:black,color:white,fill:#636363
+  classDef ccr stroke:black,color:white,fill:#159BD7
+
+  class Rename,Analyses process
+  class GenoHub,Scratch,Store,XDrive storage
+  class ccr 
+
 ```
