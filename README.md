@@ -30,7 +30,7 @@ Demultiplexed and compressed sequence reads in FASTQ format. Files should end in
 
 MAC -- &bsol;&bsol;SI-OCIO-QNAS2&bsol;NMNH-DEPARTMENT
 WINDOWS -- SMB://SI-OCIO-QNAS2/NMNH-DEPARTMENT
-Unlimited storage. Incrementally backed up daily, fully backed up weekly.)]
+Unlimited storage? Incrementally backed up daily, fully backed up weekly.)]
 
   Move1[/download raw FASTQ files/]
   Move2[/copy renamed raw FASTQs/]
