@@ -1,7 +1,7 @@
 # SI-Ocean-DNA
 Smithsonian NMNH Ocean DNA - data management and analysis
 
-## Raw Sequence Data -- Best Practices for File Names
+## Sequence Data File Names -- Best Practices Guide
 
 Required fields:
 - Voucher/Catalog ID
