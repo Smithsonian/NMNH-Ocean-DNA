@@ -3,9 +3,14 @@ Smithsonian NMNH Ocean DNA - data management and analysis
 
 ## Raw Sequence Data -- Best Practices for File Names
 
+Required fields:
+- Voucher ID
+- Taxonomic ID (Family-Genus-Species?)
+- anything else?
 
-- 
-Use delimeter (underscore? period? dash?) t
+NO SPACES in file name
+
+Use delimiter (underscore? period? dash?) to seperate fields in the file name. Delimiter must NOT be used within the fields.
 
 ## Data Management Guide
 ```mermaid
