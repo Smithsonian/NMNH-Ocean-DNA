@@ -1,6 +1,8 @@
 # SI-Ocean-DNA
 Smithsonian NMNH Ocean DNA - data management and analysis
 
+## Sequence Data File Naming Best Practices
+
 ## Data Management Guide
 ```mermaid
 graph TD;
