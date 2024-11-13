@@ -10,7 +10,7 @@ Required fields:
 
 NO SPACES in file name
 
-Use delimiter (underscore? period? dash?) to seperate fields in the file name. Delimiter must NOT be used within the fields.
+Use delimiter (underscore? period? dash?) to separate fields in the file name. Delimiter must NOT be used within the fields.
 
 ## Data Management Guide
 ```mermaid
