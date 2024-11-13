@@ -27,8 +27,9 @@ Demultiplexed and compressed sequence reads in FASTQ format. Files should end in
 /store/???/USER_ID
 40 TB. Not backed up. For non-active projects or large raw data files. Drive system is slower, can't be used for active analysis)]
   XDrive[(**X Drive**
-MAC: \\SI-OCIO-QNAS2\NMNH-DEPARTMENT 
-WINDOWS: SMB://SI-OCIO-QNAS2/NMNH-DEPARTMENT
+
+MAC -- &bsol;&bsol;SI-OCIO-QNAS2&bsol;NMNH-DEPARTMENT
+WINDOWS -- SMB://SI-OCIO-QNAS2/NMNH-DEPARTMENT
 Unlimited storage. Incrementally backed up daily, fully backed up weekly.)]
 
   Move1[/download raw FASTQ files/]
