@@ -36,7 +36,7 @@ Unlimited storage. Incrementally backed up daily, fully backed up weekly.]
     Scratch-->Rename
     Rename-->Analyses
     Rename--copy renamed raw FASTQs-->Store
-    Analyses--copy trimmed reads and final results-->Store
+    Analyses--copy clean reads and final results-->Store
   end
   Store--Dan runs monthly backup-->XDrive
 
