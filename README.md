@@ -4,7 +4,7 @@ Smithsonian NMNH Ocean DNA - data management and analysis
 ## Raw Sequence Data -- Best Practices for File Names
 
 Required fields:
-- Voucher ID
+- Voucher/Catalog ID
 - Taxonomic ID (Family-Genus-Species?)
 - anything else?
 
