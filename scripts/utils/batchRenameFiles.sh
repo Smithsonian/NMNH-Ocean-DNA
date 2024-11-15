@@ -1,21 +1,4 @@
 #!/bin/bash
-
-# script to rename many files in a specified directory
-# can replace all or part of the file names
-# author: Dan MacGuigan
-# PLEASE consider making a backup of the directory before running this script
-# script takes 2 arguments:
-# 1) tab-delimited txt file with two columns:
-#       first column contains the old file name (or old part of a file name)
-#       second column contains the new file name (or new part of a file name)
-#       example file:
-#          sample1.fasta	sample1_newStuff.fasta
-#          s1	newStuff 
-#       this will rename the file "sample1.fasta" to "sample1_newStuff.fasta"
-#       and it will replace "s1" with "newStuff" in all file names
-# 2) directory to recursively search
-# usage: batchRenameFiles.sh NAMES_FILE.txt /PATH/TO/DIRECTORY/TO/SEARCH
-
 ###########
 # Help
 ###########
