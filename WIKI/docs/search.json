@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "SI Ocean DNA",
+    "section": "",
+    "text": "Welcome to the SI Ocean DNA landing page."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Here you can find documentation on best practices, data management, utility scripts, and data analysis pipelines."
+  }
+]
