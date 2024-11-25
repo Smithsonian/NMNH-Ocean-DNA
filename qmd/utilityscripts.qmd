@@ -1,0 +1,75 @@
+# batchRenameFiles.sh
+
+[Source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/utils/batchRenameFiles.sh)
+
+Script to quickly rename many files. Can replace all (`-m full`) or part (`-m partial`) of the file names in a target directory.
+
+Requires the util-linux [rename](https://manpages.debian.org/stretch/util-linux/rename.ul.1.en.html) tool.
+
+> [!WARNING]
+> PLEASE consider making a backup of the target directory before running this script
+
+Help documentation:
+```
+Syntax: batchRenameFiles.sh [-h|d|t|m]
+Options:
+h     Print this Help
+d     Directory containing files to rename
+t     Tab-delimited txt file with two columns:
+        First column: old file names or old strings in file names
+        Second column: new file names or new strings in file names
+m     File rename mode [full|partial]
+```
+
+> [!TIP]
+> This script requires UNIX line endings for the `-t` names table.
+> If you created your names table using Excel or a Windows computer, it may have DOS line endings.
+> You can easily convert your table to the correct format using [dos2unix](https://dos2unix.sourceforge.io/).
+
+Full replacement mode example:
+```bash
+# download the script
+wget https://raw.githubusercontent.com/dmacguigan/SI-Ocean-DNA/refs/heads/main/scripts/utils/batchRenameFiles.sh
+# make a test directory
+mkdir full_test
+# add some empty test files
+touch full_test/S1.txt full_test/S2.txt full_test/S3.txt
+# print contents of the test directory
+ls -l full_test
+# create a tab-delimited table of old and new file names
+echo -e "S1.txt\tsample1.text" > names.txt
+echo -e "S2.txt\tsample2.text" >> names.txt
+echo -e "S3.txt\tsample3.text" >> names.txt
+# check the table format
+cat names.txt
+# run the script
+bash batchRenameFiles.sh -m full -d ./full_test -t names.txt
+# print contents of the test directory
+ls -l full_test
+```
+
+Partial replacement mode example:
+```bash
+# download the script
+wget https://raw.githubusercontent.com/dmacguigan/SI-Ocean-DNA/refs/heads/main/scripts/utils/batchRenameFiles.sh
+# make a test directory
+mkdir partial_test
+# add some empty test files
+touch partial_test/S1.txt partial_test/S2.txt partial_test/S3.txt partial_test/S1_S3.txt
+# print contents of the test directory
+ls -l partial_test
+# create a tab-delimited table of old and new file names
+echo -e "S1\tsample1" > names.txt
+echo -e "S2\tsample2" >> names.txt
+echo -e "S3\tsample3" >> names.txt
+# check the table format
+cat names.txt
+# run the script
+bash batchRenameFiles.sh -m partial -d ./partial_test -t names.txt
+# print contents of the test directory
+ls -l partial_test
+```
+
+# recursiveReplaceStrings.sh
+
+[Source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/utils/recursiveReplaceStrings.sh)

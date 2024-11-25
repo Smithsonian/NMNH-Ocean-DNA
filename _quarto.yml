@@ -3,16 +3,28 @@ project:
   output-dir: docs
 
 website:
-  title: "WIKI"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+  title: "SI Ocean DNA"
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - section: "Best Practices"
+        contents:
+        - qmd/bestpractices.qmd
+      - section: "Data Management"
+        contents:
+        - qmd/datamanagement.qmd
+      - section: "Utility Scripts"
+        contents: 
+        - qmd/utilityscripts.qmd
+      - section: "Hydra Analysis Scripts"
+        contents:
+        - qmd/hydrascripts.qmd
+
 
 format:
   html:
-    theme: cosmo
+    theme: yeti
     css: styles.css
     toc: true
 
