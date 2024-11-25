@@ -4,6 +4,9 @@ project:
 
 website:
   title: "SI Ocean DNA"
+  navbar:
+    background: primary
+    search: true
   sidebar:
     style: "docked"
     search: true

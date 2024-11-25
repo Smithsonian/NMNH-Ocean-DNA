@@ -6,8 +6,9 @@ Script to quickly rename many files. Can replace all (`-m full`) or part (`-m pa
 
 Requires the util-linux [rename](https://manpages.debian.org/stretch/util-linux/rename.ul.1.en.html) tool.
 
-> [!WARNING]
-> PLEASE consider making a backup of the target directory before running this script
+::: {.callout-warning}
+PLEASE consider making a backup of the target directory before running this script
+:::
 
 Help documentation:
 ```
@@ -21,10 +22,11 @@ t     Tab-delimited txt file with two columns:
 m     File rename mode [full|partial]
 ```
 
-> [!TIP]
-> This script requires UNIX line endings for the `-t` names table.
-> If you created your names table using Excel or a Windows computer, it may have DOS line endings.
-> You can easily convert your table to the correct format using [dos2unix](https://dos2unix.sourceforge.io/).
+::: {callout.tip}
+This script requires UNIX line endings for the `-t` names table.
+If you created your names table using Excel or a Windows computer, it may have DOS line endings.
+You can easily convert your table to the correct format using [dos2unix](https://dos2unix.sourceforge.io/).
+:::
 
 Full replacement mode example:
 ```bash

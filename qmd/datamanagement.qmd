@@ -46,7 +46,7 @@ Unlimited storage space on NSL Google Shared Drive. Only accessible by NOAA empl
   class Rename,Analyses,Move1,Move2,Move3,Move4 process
   class GenoHub,Scratch,Store,XDrive,GDrive storage
 
-  click Rename "https://github.com/dmacguigan/SI-Ocean-DNA/wiki/Best-Practices#sequence-data-file"
+  click Rename "bestpractices.html"
 
   linkStyle default stroke:grey, stroke-width:4px
 
