@@ -71,7 +71,3 @@ bash batchRenameFiles.sh -m partial -d ./partial_test -t names.txt
 # print contents of the test directory
 ls -l partial_test
 ```
-
-# recursiveReplaceStrings.sh
-
-[Source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/utils/recursiveReplaceStrings.sh)

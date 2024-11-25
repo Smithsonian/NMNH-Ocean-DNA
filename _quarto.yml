@@ -19,7 +19,8 @@ website:
         - qmd/datamanagement.qmd
       - section: "Utility Scripts"
         contents: 
-        - qmd/utilityscripts.qmd
+        - qmd/utilityscripts/batchRenameFiles.qmd
+        - qmd/utilityscripts/recursiveReplaceStrings.qmd
       - section: "Hydra Analysis Scripts"
         contents:
         - qmd/hydrascripts.qmd
