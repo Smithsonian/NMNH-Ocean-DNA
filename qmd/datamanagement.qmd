@@ -20,10 +20,10 @@ Unlimited storage space on NSL Google Shared Drive. Only accessible by NOAA empl
   
   Rename("`Dan? renames FASTQ files following Best Practices Guide`")
 
-  Move1[/Dan? downloads raw FASTQ files/]
-  Move2[/Dan? copies renamed raw FASTQs/]
+  Move1[/download raw FASTQ files - Dan M.?/]
+  Move2[/copy renamed raw FASTQs - Dan M.?/]
   Move3[/copy clean reads and final results/]
-  Move4[/Dan runs monthly backup/]
+  Move4[/run monthly backup - Dan M./]
 
   GenoHub-->Move1
   Move1-->Scratch
@@ -47,5 +47,7 @@ Unlimited storage space on NSL Google Shared Drive. Only accessible by NOAA empl
   class GenoHub,Scratch,Store,XDrive,GDrive storage
 
   click Rename "https://github.com/dmacguigan/SI-Ocean-DNA/wiki/Best-Practices#sequence-data-file"
+
+  linkStyle default stroke:grey, stroke-width:4px
 
 ```

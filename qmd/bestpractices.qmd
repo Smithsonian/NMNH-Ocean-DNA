@@ -1,6 +1,6 @@
 # Naming Conventions
 
-## FASTQ/A Sequence Data Files
+## FASTQ/A Files
 
 FASTQ and FASTA files contain biological sequence data, usually nucleotide or amino acid sequences. FASTQ files contain sequence quality information (for example, Phred/Q scores), while FASTA files contain only the sequence.
 

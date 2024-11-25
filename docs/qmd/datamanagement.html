@@ -66,6 +66,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<meta name="mermaid-theme" content="default">
 <script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
@@ -222,10 +223,10 @@ Unlimited storage space on NSL Google Shared Drive. Only accessible by NOAA empl
   
   Rename("`Dan? renames FASTQ files following Best Practices Guide`")
 
-  Move1[/Dan? downloads raw FASTQ files/]
-  Move2[/Dan? copies renamed raw FASTQs/]
+  Move1[/downloads raw FASTQ files - Dan?/]
+  Move2[/copies renamed raw FASTQs - Dan?/]
   Move3[/copy clean reads and final results/]
-  Move4[/Dan runs monthly backup/]
+  Move4[/runs monthly backup - Dan?/]
 
   GenoHub--&gt;Move1
   Move1--&gt;Scratch
@@ -249,6 +250,8 @@ Unlimited storage space on NSL Google Shared Drive. Only accessible by NOAA empl
   class GenoHub,Scratch,Store,XDrive,GDrive storage
 
   click Rename "https://github.com/dmacguigan/SI-Ocean-DNA/wiki/Best-Practices#sequence-data-file"
+
+  linkStyle default stroke:grey, stroke-width:4px
 
 </pre>
 </div>
