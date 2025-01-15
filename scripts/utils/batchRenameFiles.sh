@@ -82,6 +82,8 @@ then
   exit
 fi
 
+dos2unix "${TABLE}"
+
 if [ ${MODE} == "full" ]
 then
 	echo "Performing full file name replacement"
@@ -91,7 +93,7 @@ then
 		t=(${line}) # make array from line in txt file
 		echo "${t[0]} -> ${t[1]}"
 		mv ${DIR}/${t[0]} ${DIR}/${t[1]}
-	done < ${TABLE}
+	done < "${TABLE}"
 elif [ ${MODE} == "partial" ]
 then
 	echo "Performing partial file name replacement"
@@ -105,7 +107,7 @@ then
 		paste files.temp.txt filesNew.temp.txt | sed 's/\t/ -> /' 
 		rm files.temp.txt filesNew.temp.txt
 		rename ${t[0]} ${t[1]} ${DIR}/*
-	done < ${TABLE}
+	done < "${TABLE}"
 fi
 
 echo ""
