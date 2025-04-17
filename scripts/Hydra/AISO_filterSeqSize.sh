@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # ABOUT ################################################
-# author: Dan macguigan
+# author: Dan MacGuigan
 # contact: macguigand@si.edu
 #
-# Script to filter FASTA sequences by minumum size.
+# Script to filter FASTA sequences by minimum size.
 # Will run on all FASTA files in the supplied directory
 # and write results to new files.
 # 
-# Written speificailly for NMNH Hydra cluster, but can
+# Written specifically for NMNH Hydra cluster, but can
 # work on any computer with seqtk installed.
 # https://github.com/lh3/seqtk
 #
