@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About – SI Ocean DNA</title>
+<title>blast_18s_28s – SI Ocean DNA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-53f539a478d6ecd1be31ce9fd30fd81c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e6dbb0171de354fedccfabd54b72fc33.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-53f539a478d6ecd1be31ce9fd30fd81c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-e6dbb0171de354fedccfabd54b72fc33.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed quarto-light">
@@ -79,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">SI Ocean DNA</span>
     </a>
   </div>
@@ -93,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">About</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/hydrascripts/BLAST_18s_28s.html">Hydra Analysis Scripts</a></li><li class="breadcrumb-item"><a href="../../qmd/hydrascripts/BLAST_18s_28s.html">BLAST - find 18s &amp; 28s in genome assembly</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -124,7 +159,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qmd/bestpractices.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/bestpractices.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Naming Conventions</span></a>
   </div>
 </li>
@@ -141,7 +176,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qmd/datamanagement.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/datamanagement.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workflow Diagram</span></a>
   </div>
 </li>
@@ -158,13 +193,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qmd/utilityscripts/batchRenameFiles.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/utilityscripts/batchRenameFiles.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Batch rename files</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qmd/utilityscripts/recursiveReplaceStrings.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/utilityscripts/recursiveReplaceStrings.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Recursive replace strings</span></a>
   </div>
 </li>
@@ -181,19 +216,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qmd/hydrascripts/BLAST_18s_28s.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/hydrascripts/BLAST_18s_28s.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">BLAST - find 18s &amp; 28s in genome assembly</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qmd/hydrascripts/GetOrganelle.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/hydrascripts/GetOrganelle.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">GetOrganelle - targeted organelle assembly</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qmd/hydrascripts/Go_fetch.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/hydrascripts/Go_fetch.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">go_fetch - download organelle or ribosomal sequences from GenBank</span></a>
   </div>
 </li>
@@ -204,34 +239,78 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#blast---find-18s-28s-in-genome-assembly" id="toc-blast---find-18s-28s-in-genome-assembly" class="nav-link active" data-scroll-target="#blast---find-18s-28s-in-genome-assembly">BLAST - find 18s &amp; 28s in genome assembly</a>
+  <ul class="collapse">
+  <li><a href="#blast_18s-28s_hydra.sh" id="toc-blast_18s-28s_hydra.sh" class="nav-link" data-scroll-target="#blast_18s-28s_hydra.sh">BLAST_18s-28s_hydra.sh</a></li>
+  <li><a href="#blast_job.sh" id="toc-blast_job.sh" class="nav-link" data-scroll-target="#blast_job.sh">BLAST_job.sh</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">About</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/hydrascripts/BLAST_18s_28s.html">Hydra Analysis Scripts</a></li><li class="breadcrumb-item"><a href="../../qmd/hydrascripts/BLAST_18s_28s.html">BLAST - find 18s &amp; 28s in genome assembly</a></li></ol></nav></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
+<section id="blast---find-18s-28s-in-genome-assembly" class="level1">
+<h1>BLAST - find 18s &amp; 28s in genome assembly</h1>
+<section id="blast_18s-28s_hydra.sh" class="level2">
+<h2 class="anchored" data-anchor-id="blast_18s-28s_hydra.sh">BLAST_18s-28s_hydra.sh</h2>
+<p><a href="https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/Hydra/BLAST_Hydra/BLAST_18s-28s_hydra.sh">source code</a></p>
+<p>This script is meant to help identify and extract contigs/scaffolds containing the 18s and 28s genes.</p>
+<p>To download the script:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://raw.githubusercontent.com/dmacguigan/SI-Ocean-DNA/refs/heads/main/scripts/Hydra/BLAST_Hydra/BLAST_18s-28s_hydra.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Try running <code>bash batchRenameFiles.sh -h</code> to print the help documentation.</p>
+<pre><code>Script to find and rename contigs/scaffolds containing
+18s and/or 28s genes
+
+author: Dan MacGuigan
+contact: macguigand@si.edu
+
+Options:
+c   FASTA file containing genomics scaffolds or contigs
+i   sample ID, will be used to name resulting files and BLAST hits
+s   FASTA file containing query 18s sequence
+l   FASTA file containing query 28s sequence
+h   Print this Help
+
+Usage:
+bash BLAST_18s-28s_hydra.sh -c my_contigs.fasta -i my_sample_ID -s my_18s.fasta -l my_28s.fasta</code></pre>
+</section>
+<section id="blast_job.sh" class="level2">
+<h2 class="anchored" data-anchor-id="blast_job.sh">BLAST_job.sh</h2>
+<p><a href="https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/Hydra/BLAST_Hydra/BLAST_job.sh">source code</a></p>
+<p>This script is a wrapper for <code>BLAST_18s-28s_hydra.sh</code>, allowing you analyze multiple genome assemblies.</p>
+<p>To download the script:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://raw.githubusercontent.com/dmacguigan/SI-Ocean-DNA/refs/heads/main/scripts/Hydra/BLAST_Hydra/BLAST_job.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You will then need to modify the <code>INPUTS</code> section.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># INPUTS ################################################</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># working directory containing contig/scaffold FASTA files</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="va">DIR</span><span class="op">=</span><span class="st">"/pool/public/genomics/macguigand/BLAST_testing/scaffolds"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># FASTA file suffix (e.g. "fasta", "fa", "fas")</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># must be the same for all files in DIR</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="va">SUFFIX</span><span class="op">=</span><span class="st">"fasta"</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># full path to 18s and 28s query sequences</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="va">rRNA_S</span><span class="op">=</span><span class="st">"/pool/public/genomics/macguigand/BLAST_testing/18s.fasta"</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="va">rRNA_L</span><span class="op">=</span><span class="st">"/pool/public/genomics/macguigand/BLAST_testing/28s.fasta"</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># full path to your copy of the BLAST_18s-28s_hydra.sh script</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="va">BLAST_SCRIPT</span><span class="op">=</span><span class="st">"/pool/public/genomics/macguigand/BLAST_testing/BLAST_18s-28s_hydra.sh"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Running <code>qsub BLAST_job.sh</code> will submit the script to the cluster’s job scheduler.</p>
+<p>Once complete, BLAST hits will be written to a new folder <code>BLAST_hits</code> within <code>DIR</code>.</p>
 
 
-</header>
-
-
-<p>Here you can find documentation on best practices, data management, utility scripts, and data analysis pipelines.</p>
-
-
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

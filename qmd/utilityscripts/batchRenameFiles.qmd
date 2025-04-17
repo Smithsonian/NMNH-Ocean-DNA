@@ -1,4 +1,4 @@
-# batchRenameFiles.sh
+# Batch rename files
 
 [Source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/utils/batchRenameFiles.sh)
 

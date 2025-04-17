@@ -34,7 +34,7 @@ SUFFIX="fasta"
 rRNA_S="/pool/public/genomics/macguigand/BLAST_testing/18s.fasta"
 rRNA_L="/pool/public/genomics/macguigand/BLAST_testing/28s.fasta"
 
-# full path to BLAST_18s-28s_hydra.sh script
+# full path to your copy of the BLAST_18s-28s_hydra.sh script
 BLAST_SCRIPT="/pool/public/genomics/macguigand/BLAST_testing/BLAST_18s-28s_hydra.sh"
 
 # SCRIPT ################################################

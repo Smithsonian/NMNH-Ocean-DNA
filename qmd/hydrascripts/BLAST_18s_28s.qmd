@@ -1,0 +1,66 @@
+# BLAST - find 18s & 28s in genome assembly
+
+## BLAST_18s-28s_hydra.sh
+[source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/Hydra/BLAST_Hydra/BLAST_18s-28s_hydra.sh)
+
+This script is meant to help identify and extract contigs/scaffolds containing the 18s and 28s genes.
+
+To download the script:
+
+```bash
+wget https://raw.githubusercontent.com/dmacguigan/SI-Ocean-DNA/refs/heads/main/scripts/Hydra/BLAST_Hydra/BLAST_18s-28s_hydra.sh
+```
+
+Try running `bash batchRenameFiles.sh -h` to print the help documentation.
+
+```
+Script to find and rename contigs/scaffolds containing
+18s and/or 28s genes
+
+author: Dan MacGuigan
+contact: macguigand@si.edu
+
+Options:
+c   FASTA file containing genomics scaffolds or contigs
+i   sample ID, will be used to name resulting files and BLAST hits
+s   FASTA file containing query 18s sequence
+l   FASTA file containing query 28s sequence
+h   Print this Help
+
+Usage:
+bash BLAST_18s-28s_hydra.sh -c my_contigs.fasta -i my_sample_ID -s my_18s.fasta -l my_28s.fasta
+```
+
+## BLAST_job.sh
+[source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/Hydra/BLAST_Hydra/BLAST_job.sh)
+
+This script is a wrapper for `BLAST_18s-28s_hydra.sh`, allowing you analyze multiple genome assemblies.
+
+To download the script:
+```bash
+wget https://raw.githubusercontent.com/dmacguigan/SI-Ocean-DNA/refs/heads/main/scripts/Hydra/BLAST_Hydra/BLAST_job.sh
+```
+
+You will then need to modify the `INPUTS` section.
+
+```bash
+# INPUTS ################################################
+
+# working directory containing contig/scaffold FASTA files
+DIR="/pool/public/genomics/macguigand/BLAST_testing/scaffolds"
+
+# FASTA file suffix (e.g. "fasta", "fa", "fas")
+# must be the same for all files in DIR
+SUFFIX="fasta"
+
+# full path to 18s and 28s query sequences
+rRNA_S="/pool/public/genomics/macguigand/BLAST_testing/18s.fasta"
+rRNA_L="/pool/public/genomics/macguigand/BLAST_testing/28s.fasta"
+
+# full path to your copy of the BLAST_18s-28s_hydra.sh script
+BLAST_SCRIPT="/pool/public/genomics/macguigand/BLAST_testing/BLAST_18s-28s_hydra.sh"
+```
+
+Running `qsub BLAST_job.sh` will submit the script to the cluster's job scheduler.
+
+Once complete, BLAST hits will be written to a new folder `BLAST_hits` within `DIR`.

@@ -23,8 +23,9 @@ website:
         - qmd/utilityscripts/recursiveReplaceStrings.qmd
       - section: "Hydra Analysis Scripts"
         contents:
-        - qmd/hydrascripts.qmd
-
+        - qmd/hydrascripts/BLAST_18s_28s.qmd
+        - qmd/hydrascripts/GetOrganelle.qmd
+        - qmd/hydrascripts/Go_fetch.qmd
 
 format:
   html:

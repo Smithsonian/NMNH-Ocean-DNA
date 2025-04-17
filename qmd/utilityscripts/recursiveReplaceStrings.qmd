@@ -1,3 +1,7 @@
-# recursiveReplaceStrings.sh
+# Recursive replace strings
 
 [Source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/utils/recursiveReplaceStrings.sh)
+
+::: {.callout-warning}
+PLEASE consider making a backup of the target directory before running this script
+:::

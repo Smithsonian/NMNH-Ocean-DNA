@@ -27,7 +27,7 @@ Help()
    echo "h   Print this Help"
    echo ""
    echo "Usage:"
-   echo "bash BLAST_18s-28s_hydra.sh -c my_contigs.fasta -s my_18s.fasta -l my_28s.fasta"
+   echo "bash BLAST_18s-28s_hydra.sh -c my_contigs.fasta -i my_sample_ID -s my_18s.fasta -l my_28s.fasta"
 }
 
 ############################################################
@@ -123,3 +123,5 @@ rm -rf *_BLAST_results
 
 echo ""
 echo "FINISHED sample: ${CONTIGS}"
+echo "results written to:"
+echo "${PWD}/BLAST_hits/${ID}.blastHits.fasta"
