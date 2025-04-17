@@ -1,8 +1,11 @@
 # GetOrganelle - targeted organelle assembly
 
-[Source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/Hydra/AISO_GetOrganelle_Hydra.sh)
-
 ::: {.callout-note}
 `AISO` refers to a script format with 4 required sections: ABOUT, INPUTS, SCRIPT, and OUTPUTS.
 The user should only need to modify the INPUTS section of the script
 :::
+
+Script name: `AISO_GetOrganelle_Hydra.sh`
+
+[Source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/Hydra/AISO_GetOrganelle_Hydra.sh)
+

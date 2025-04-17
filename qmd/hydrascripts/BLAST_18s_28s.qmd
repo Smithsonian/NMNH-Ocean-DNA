@@ -1,6 +1,9 @@
 # BLAST - find 18s & 28s in genome assembly
 
 ## BLAST_18s-28s_hydra.sh
+
+Script name: `BLAST_18s-28s_hydra.sh`
+
 [source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/Hydra/BLAST_Hydra/BLAST_18s-28s_hydra.sh)
 
 This script is meant to help identify and extract contigs/scaffolds containing the 18s and 28s genes.
@@ -32,6 +35,9 @@ bash BLAST_18s-28s_hydra.sh -c my_contigs.fasta -i my_sample_ID -s my_18s.fasta 
 ```
 
 ## BLAST_job.sh
+
+Script name: `BLAST_job.sh`
+
 [source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/Hydra/BLAST_Hydra/BLAST_job.sh)
 
 This script is a wrapper for `BLAST_18s-28s_hydra.sh`, allowing you analyze multiple genome assemblies.
