@@ -106,9 +106,9 @@ seqtk subseq "${CONTIGS}" blast_temp/28s_contigs.txt > blast_temp/28s_temp.fasta
 seqtk subseq "${CONTIGS}" blast_temp/18s-28s_contigs.txt > blast_temp/18s-28s_temp.fasta
 
 # modify contig names
-sed -i "/>/>$ID 18s_blast_hit /g" blast_temp/18s_temp.fasta
-sed -i "/>/>$ID 28s_blast_hit /g" blast_temp/28s_temp.fasta
-sed -i "/>/>$ID 18s-28s_blast_hit /g" blast_temp/18s-28s_temp.fasta
+sed -i "s/>/>$ID 18s_blast_hit /g" blast_temp/18s_temp.fasta
+sed -i "s/>/>$ID 28s_blast_hit /g" blast_temp/28s_temp.fasta
+sed -i "s/>/>$ID 18s-28s_blast_hit /g" blast_temp/18s-28s_temp.fasta
 
 # merge extracted seqs and write to output directory
 mkdir -p BLAST_hits

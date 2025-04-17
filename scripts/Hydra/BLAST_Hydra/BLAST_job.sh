@@ -38,6 +38,7 @@ rRNA_L="/pool/public/genomics/macguigand/BLAST_testing/28s.fasta"
 BLAST_SCRIPT="/pool/public/genomics/macguigand/BLAST_testing/BLAST_18s-28s_hydra.sh"
 
 # SCRIPT ################################################
+# DO NOT MODIFY #########################################
 
 # loop through every file ending with SUFFIX in DIR
 cd ${DIR}
@@ -50,6 +51,7 @@ do
 done
 
 # OUTPUT ################################################
+# DO NOT MODIFY #########################################
 
 echo ""
 echo "DONE processing all samples"
