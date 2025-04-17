@@ -16,7 +16,7 @@
 # and extract and rename hits
 #
 # require the BLAST_18s-28s_hydra.sh
-# <<LINK>>
+# https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/Hydra/BLAST_Hydra/BLAST_18s-28s_hydra.sh
 #
 # author: Dan MacGuigan
 # contact: macguigand@si.edu
