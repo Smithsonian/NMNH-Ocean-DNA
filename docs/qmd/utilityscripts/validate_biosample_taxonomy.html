@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/utilityscripts/validate_biosample_taxonomy.html">Utility Scripts</a></li><li class="breadcrumb-item"><a href="../../qmd/utilityscripts/validate_biosample_taxonomy.html">Validate taxonomy between all GenBank-BioSample pairs in a BioProject</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/utilityscripts/validate_biosample_taxonomy.html">Utility Scripts</a></li><li class="breadcrumb-item"><a href="../../qmd/utilityscripts/validate_biosample_taxonomy.html">Validate BioProject taxonomy</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -194,7 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../qmd/utilityscripts/validate_biosample_taxonomy.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Validate taxonomy between all GenBank-BioSample pairs in a BioProject</span></a>
+ <span class="menu-text">Validate BioProject taxonomy</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -250,18 +250,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#validate-taxonomy-between-all-genbank-biosample-pairs-in-a-bioproject" id="toc-validate-taxonomy-between-all-genbank-biosample-pairs-in-a-bioproject" class="nav-link active" data-scroll-target="#validate-taxonomy-between-all-genbank-biosample-pairs-in-a-bioproject">Validate taxonomy between all GenBank-BioSample pairs in a BioProject</a></li>
+  <li><a href="#validate-bioproject-taxonomy" id="toc-validate-bioproject-taxonomy" class="nav-link active" data-scroll-target="#validate-bioproject-taxonomy">Validate BioProject taxonomy</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/utilityscripts/validate_biosample_taxonomy.html">Utility Scripts</a></li><li class="breadcrumb-item"><a href="../../qmd/utilityscripts/validate_biosample_taxonomy.html">Validate taxonomy between all GenBank-BioSample pairs in a BioProject</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/utilityscripts/validate_biosample_taxonomy.html">Utility Scripts</a></li><li class="breadcrumb-item"><a href="../../qmd/utilityscripts/validate_biosample_taxonomy.html">Validate BioProject taxonomy</a></li></ol></nav></header>
 
 
 
 
-<section id="validate-taxonomy-between-all-genbank-biosample-pairs-in-a-bioproject" class="level1">
-<h1>Validate taxonomy between all GenBank-BioSample pairs in a BioProject</h1>
+<section id="validate-bioproject-taxonomy" class="level1">
+<h1>Validate BioProject taxonomy</h1>
 <p>Script name: <code>validate_biosample_taxonomy.py</code></p>
 <p><a href="https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/utils/validate_biosample_taxonomy.py">Source code</a></p>
 <p>This python script checks the taxonomy between all GenBank nucleotide records and associated BioSamples in a specific BioProject. It verifies that the <code>ORGANISM</code> field of the GenBank record matches the BioSample <code>OrganismName</code>. Mismatches are written to a CSV file, <code>taxon_mismatches.csv</code>.</p>

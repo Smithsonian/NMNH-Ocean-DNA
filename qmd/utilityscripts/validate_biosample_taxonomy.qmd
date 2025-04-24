@@ -1,4 +1,4 @@
-# Validate taxonomy between all GenBank-BioSample pairs in a BioProject
+# Validate BioProject taxonomy
 
 Script name: `validate_biosample_taxonomy.py`
 
