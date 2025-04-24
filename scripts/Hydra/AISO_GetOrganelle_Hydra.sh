@@ -12,7 +12,7 @@
 #$ -cwd
 
 # ABOUT ################################################
-# author: Dan macguigan
+# author: Dan MacGuigan
 # contact: macguigand@si.edu
 #
 # Script to run GetOrganelle on NMNH Hydra cluster,

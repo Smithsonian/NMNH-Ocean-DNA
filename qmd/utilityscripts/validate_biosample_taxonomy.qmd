@@ -1,0 +1,42 @@
+# Validate taxonomy between all GenBank-BioSample pairs in a BioProject
+
+Script name: `validate_biosample_taxonomy.py`
+
+[Source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/utils/validate_biosample_taxonomy.py)
+
+This python script checks the taxonomy between all GenBank nucleotide records and associated BioSamples in a specific BioProject. 
+It verifies that the `ORGANISM` field of the GenBank record matches the BioSample `OrganismName`.
+Mismatches are written to a CSV file, `taxon_mismatches.csv`.
+
+If a GenBank nucleotide record does not have an associated BioSample, it the GenBank accession number is written to the file `GenBank_records_no_BioSample.txt`.
+
+This script has the following dependencies:
+
+  - [python 3](https://www.python.org/downloads/)
+  - [biopython](https://biopython.org/wiki/Download)
+
+This could be easily set up in a conda environment. For example:
+```bash
+conda create --name biopython conda-forge::biopython
+```
+
+This script takes 3 arguments
+
+  1. A NCBI BioProject number (e.g. PRJNA720393)
+  2. Your email address, required for Entrez tools
+  3. Your NCBI API key ([instructions to generate a key](https://ncbiinsights.ncbi.nlm.nih.gov/2017/11/02/new-api-keys-for-the-e-utilities/))
+
+Example usage:
+
+```bash
+python validate_biosample_taxonomy.py "PRJNXXXXX" "YOUR_EMAIL" "YOUR_NCBI_API_KEY"
+ ```
+
+::: {.callout-warning}
+NCBI Entrez Programming Utilities (E-utilities) are limited to 10,000 queries at a time ([`retmax = 10000`](https://www.ncbi.nlm.nih.gov/books/NBK25499/)). If your BioProject contains more than 10,000 GenBank records, this script will not work.
+:::
+ 
+::: {.callout-note}
+This script may randomly crash. This is usually due to a http request timeout. Try restarting the script if this happens.
+:::
+

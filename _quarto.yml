@@ -19,6 +19,7 @@ website:
         - qmd/datamanagement.qmd
       - section: "Utility Scripts"
         contents: 
+        - qmd/utilityscripts/validate_biosample_taxonomy.qmd
         - qmd/utilityscripts/batchRenameFiles.qmd
         - qmd/utilityscripts/recursiveReplaceStrings.qmd
       - section: "Hydra Analysis Scripts"

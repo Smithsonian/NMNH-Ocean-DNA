@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ABOUT ########################################################
-# author: Dan macguigan
+# author: Dan MacGuigan
 # contact: macguigand@si.edu
 #
 # Script to generate custom GetOrganlle reference databases
