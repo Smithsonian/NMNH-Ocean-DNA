@@ -311,6 +311,19 @@ m     File rename mode [full|partial]</code></pre>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># print contents of the test directory</span></span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> full_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Partial replacement mode example:</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Partial replacement mode may fail if strings to be replaced are nested. For example, if you want to replace “s_1” with “s_A” and “s_10” with “s_B”, you will end up with “s_A” and “s_A0”, because “s_1” is nested in “s_10”.</p>
+</div>
+</div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># download the script</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://raw.githubusercontent.com/dmacguigan/SI-Ocean-DNA/refs/heads/main/scripts/utils/batchRenameFiles.sh</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># make a test directory</span></span>

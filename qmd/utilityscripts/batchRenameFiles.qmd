@@ -53,6 +53,12 @@ ls -l full_test
 ```
 
 Partial replacement mode example:
+
+::: {.callout-warning}
+Partial replacement mode may fail if strings to be replaced are nested. 
+For example, if you want to replace "s_1" with "s_A" and "s_10" with "s_B", you will end up with "s_A" and "s_A0", because "s_1" is nested in "s_10".
+:::
+
 ```bash
 # download the script
 wget https://raw.githubusercontent.com/dmacguigan/SI-Ocean-DNA/refs/heads/main/scripts/utils/batchRenameFiles.sh
