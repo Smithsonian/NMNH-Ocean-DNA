@@ -97,7 +97,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qmd/datamanagement.html">Data Management</a></li><li class="breadcrumb-item"><a href="../qmd/datamanagement.html">Workflow Diagram</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qmd/datamanagement.html">Data Management</a></li><li class="breadcrumb-item"><a href="../qmd/datamanagement.html">Data Management Workflow</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -146,7 +146,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../qmd/datamanagement.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Workflow Diagram</span></a>
+ <span class="menu-text">Data Management Workflow</span></a>
   </div>
 </li>
       </ul>
@@ -219,18 +219,32 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#workflow-diagram" id="toc-workflow-diagram" class="nav-link active" data-scroll-target="#workflow-diagram">Workflow Diagram</a></li>
+  <li><a href="#data-management-workflow" id="toc-data-management-workflow" class="nav-link active" data-scroll-target="#data-management-workflow">Data Management Workflow</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qmd/datamanagement.html">Data Management</a></li><li class="breadcrumb-item"><a href="../qmd/datamanagement.html">Workflow Diagram</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qmd/datamanagement.html">Data Management</a></li><li class="breadcrumb-item"><a href="../qmd/datamanagement.html">Data Management Workflow</a></li></ol></nav></header>
 
 
 
 
-<section id="workflow-diagram" class="level1">
-<h1>Workflow Diagram</h1>
+<section id="data-management-workflow" class="level1">
+<h1>Data Management Workflow</h1>
+<p>The following is a proposed data management guide for Ocean DNA sequence data. This workflow was designed for genome skimming datasets, but could be adapted for other project types.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Please see the <code>README.md</code> the Ocean DNA Hydra Store directory for details about where to upload raw data and how to name files/directories.</p>
+</div>
+</div>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -239,47 +253,48 @@ ul.task-list li input[type="checkbox"] {
 <pre class="mermaid mermaid-js">graph TD;
 
   GenoHub[**GenoHub**
-Demultiplexed and compressed sequence reads in FASTQ format. Files should end in “.fastq.gz” or “.fq.gz”. Is there any consistent naming scheme?]
+Demultiplexed and compressed sequence reads in FASTQ format. Files should end in “.fastq.gz” or “.fq.gz”]
+  Metadata[**Metadata CSV**
+Information for all samples in the GenoHub project. Must include the following columns:
+***ID:*** GenoHub sample name
+***R1:*** read 1 FASTQ file name
+***R2:*** read 2 FASTQ file name
+***Taxon:*** your best guess at taxonomic assignment
+***UniqID:*** unique identifier linked to a voucher/tissue sample
+  ]
   Analyses(Run quality/adapter trimming, mitogenome assembly, etc)
   Scratch[(**Hydra Scratch**
-/scratch/???/USER_ID
+/scratch/nmnh_ocean_dna
 40 TB. Not backed up. Might need automatic file purging to keep space clean.)]
   Store[(**Hydra Store**
-/store/???/USER_ID
+/store/public/oceandna
 40 TB. Not backed up. For non-active projects or large raw data files. Drive system is slower, can't be used for active analysis)]
-  XDrive[(**P Drive**
+  PDrive[(**P Drive**
 P:&amp;bsol;NMNH-OCEAN-DNA
-Initially 5 TB. Incrementally backed up daily, fully backed up weekly. Only accessible from SI computers.)]
-  GDrive[(**NOAA Google Drive**
-Unlimited storage space on NSL Google Shared Drive. Only accessible by NOAA employees.)]
+5 TB. Incrementally backed up daily, fully backed up weekly. Only accessible from SI computers.)]
   
-  Rename("`Dan? renames FASTQ files following Best Practices Guide`")
+  Move1[download raw FASTQ files]  
+  Move3[copy clean reads and final results]
+  Move4[Dan M. runs monthly backup]
 
-  Move1[/download raw FASTQ files - Dan M.?/]
-  Move2[/copy renamed raw FASTQs - Dan M.?/]
-  Move3[/copy clean reads and final results/]
-  Move4[/run monthly backup - Dan M./]
-
+  Metadata--&gt;Store
   GenoHub--&gt;Move1
+  Move1--&gt;Store
   Move1--&gt;Scratch
   subgraph " "
-    Scratch--&gt;Rename
-    Rename--&gt;Analyses
-    Rename--&gt;Move2
-    Move2--&gt;Store
+    Scratch--&gt;Analyses
     Analyses--&gt;Move3
     Move3--&gt;Store
   end
   Store--&gt;Move4
-  Move4--&gt;XDrive
-  Move4--&gt;GDrive
+  Move4--&gt;PDrive
 
   classDef process stroke:black,color:white,fill:#159BD7,stroke-dasharray: 5 5
   classDef storage stroke:black,color:white,fill:#159BD7
   classDef ccr stroke:black,color:white,fill:#159BD7
 
   class Rename,Analyses,Move1,Move2,Move3,Move4 process
-  class GenoHub,Scratch,Store,XDrive,GDrive storage
+  class Metadata,GenoHub,Scratch,Store,PDrive storage
 
   click Rename "bestpractices.html"
 
