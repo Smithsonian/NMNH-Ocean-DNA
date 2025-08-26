@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>batchrenamefiles – SI Ocean DNA</title>
+<title>raw_sequence_validate – SI Ocean DNA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/utilityScripts/validate_biosample_taxonomy.html">Utility Scripts</a></li><li class="breadcrumb-item"><a href="../../qmd/utilityScripts/batchRenameFiles.html">Batch rename files</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/dataManagementScripts/raw_sequence_validate.html">Data Management Scripts</a></li><li class="breadcrumb-item"><a href="../../qmd/dataManagementScripts/raw_sequence_validate.html">Validate Hydra Store raw sequence data and metadata</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -184,16 +184,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Data Management Scripts</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/dataManagementScripts/raw_sequence_validate.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/dataManagementScripts/raw_sequence_validate.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Validate Hydra Store raw sequence data and metadata</span></a>
   </div>
 </li>
@@ -201,13 +201,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
  <span class="menu-text">Utility Scripts</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../qmd/utilityScripts/validate_biosample_taxonomy.html" class="sidebar-item-text sidebar-link">
@@ -216,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/utilityScripts/batchRenameFiles.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../qmd/utilityScripts/batchRenameFiles.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Batch rename files</span></a>
   </div>
 </li>
@@ -267,98 +267,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#batch-rename-files" id="toc-batch-rename-files" class="nav-link active" data-scroll-target="#batch-rename-files">Batch rename files</a></li>
+  <li><a href="#validate-hydra-store-raw-sequence-data-and-metadata" id="toc-validate-hydra-store-raw-sequence-data-and-metadata" class="nav-link active" data-scroll-target="#validate-hydra-store-raw-sequence-data-and-metadata">Validate Hydra Store raw sequence data and metadata</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/utilityScripts/validate_biosample_taxonomy.html">Utility Scripts</a></li><li class="breadcrumb-item"><a href="../../qmd/utilityScripts/batchRenameFiles.html">Batch rename files</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/dataManagementScripts/raw_sequence_validate.html">Data Management Scripts</a></li><li class="breadcrumb-item"><a href="../../qmd/dataManagementScripts/raw_sequence_validate.html">Validate Hydra Store raw sequence data and metadata</a></li></ol></nav></header>
 
 
 
 
-<section id="batch-rename-files" class="level1">
-<h1>Batch rename files</h1>
-<p>Script name: <code>batchRenameFiles.sh</code></p>
-<p><a href="https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/utils/batchRenameFiles.sh">Source code</a></p>
-<p>Script to quickly rename many files. Can replace all (<code>-m full</code>) or part (<code>-m partial</code>) of the file names in a target directory.</p>
-<p>Requires the util-linux <a href="https://manpages.debian.org/stretch/util-linux/rename.ul.1.en.html">rename</a> tool.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>PLEASE consider making a backup of the target directory before running this script</p>
-</div>
-</div>
-<p>Help documentation:</p>
-<pre><code>Syntax: batchRenameFiles.sh [-h|d|t|m]
-Options:
-h     Print this Help
-d     Directory containing files to rename
-t     Tab-delimited txt file with two columns:
-        First column: old file names or old strings in file names
-        Second column: new file names or new strings in file names
-m     File rename mode [full|partial]</code></pre>
-<div class="{callout.tip}">
-<p>This script requires UNIX line endings for the <code>-t</code> names table. If you created your names table using Excel or a Windows computer, it may have DOS line endings. You can easily convert your table to the correct format using <a href="https://dos2unix.sourceforge.io/">dos2unix</a>.</p>
-</div>
-<p>Full replacement mode example:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># download the script</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://raw.githubusercontent.com/dmacguigan/SI-Ocean-DNA/refs/heads/main/scripts/utils/batchRenameFiles.sh</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># make a test directory</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> full_test</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add some empty test files</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> full_test/S1.txt full_test/S2.txt full_test/S3.txt</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print contents of the test directory</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> full_test</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># create a tab-delimited table of old and new file names</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"S1.txt\tsample1.text"</span> <span class="op">&gt;</span> names.txt</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"S2.txt\tsample2.text"</span> <span class="op">&gt;&gt;</span> names.txt</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"S3.txt\tsample3.text"</span> <span class="op">&gt;&gt;</span> names.txt</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># check the table format</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> names.txt</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># run the script</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> batchRenameFiles.sh <span class="at">-m</span> full <span class="at">-d</span> ./full_test <span class="at">-t</span> names.txt</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># print contents of the test directory</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> full_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Partial replacement mode example:</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Partial replacement mode may fail if strings to be replaced are nested. For example, if you want to replace “s_1” with “s_A” and “s_10” with “s_B”, you will end up with “s_A” and “s_A0”, because “s_1” is nested in “s_10”.</p>
-</div>
-</div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># download the script</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://raw.githubusercontent.com/dmacguigan/SI-Ocean-DNA/refs/heads/main/scripts/utils/batchRenameFiles.sh</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># make a test directory</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> partial_test</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add some empty test files</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> partial_test/S1.txt partial_test/S2.txt partial_test/S3.txt partial_test/S1_S3.txt</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print contents of the test directory</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> partial_test</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># create a tab-delimited table of old and new file names</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"S1\tsample1"</span> <span class="op">&gt;</span> names.txt</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"S2\tsample2"</span> <span class="op">&gt;&gt;</span> names.txt</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"S3\tsample3"</span> <span class="op">&gt;&gt;</span> names.txt</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># check the table format</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> names.txt</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># run the script</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> batchRenameFiles.sh <span class="at">-m</span> partial <span class="at">-d</span> ./partial_test <span class="at">-t</span> names.txt</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># print contents of the test directory</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> partial_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="validate-hydra-store-raw-sequence-data-and-metadata" class="level1">
+<h1>Validate Hydra Store raw sequence data and metadata</h1>
+<p>Script name: <code>validate_seq_data.py</code> or <code>validate_seq_data.sh</code></p>
+<p><a href="https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/validate_seq_data.py">python source code</a></p>
+<p><a href="https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/validate_seq_data.sh">bash source code</a></p>
+<p>Validates Ocean DNA raw sequence data against its corresponding metadata. The python script is faster than the bash script.</p>
+<p>To download the script:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># download python script</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/validate_seq_data.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># download bash script</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/validate_seq_data.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Run <code>python validate_seq_data.py -h</code> or <code>bash validate_seq_data.sh -h</code> to print the help documentation.</p>
+<pre><code>DESCRIPTION:
+    Validates Ocean DNA raw sequence data against its corresponding metadata.
+    This script checks for correct naming, file existence, and ensures that
+    the contents of the metadata file and sequence data directory match.
+
+ARGUMENTS:
+  MAP_FILE
+      Path to a text file mapping metadata to sequence data directories.
+      It requires a header row (which is ignored). Each subsequent line
+      should contain two space-separated columns:
+
+      Column 1: The metadata CSV filename.
+                - Must be in "/store/public/oceandna/raw_sequence_metadata"
+                - Must end with "_mapfile.csv"
+                - Its header must start with "ID,R1,R2,Taxon,UniqueID"
+
+      Column 2: The raw sequence data directory name.
+                - Must be in "/store/public/oceandna/raw_sequence_data"
+                - Must contain one or more .fastq.gz files
+
+OPTIONS:
+  -h, --help
+      Display this help message and exit.</code></pre>
+<p><a href="https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/example_map_file.txt">Example MAP_FILE</a>.</p>
 
 
 </section>

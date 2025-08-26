@@ -9,6 +9,7 @@ website:
     search: true
   sidebar:
     style: "docked"
+    collapse-level: 1
     search: true
     contents:
       - section: "Best Practices"
@@ -17,16 +18,19 @@ website:
       - section: "Data Management"
         contents:
         - qmd/datamanagement.qmd
+      - section: "Data Management Scripts"
+        contents:
+        - qmd/dataManagementScripts/raw_sequence_validate.qmd
       - section: "Utility Scripts"
         contents: 
-        - qmd/utilityscripts/validate_biosample_taxonomy.qmd
-        - qmd/utilityscripts/batchRenameFiles.qmd
-        - qmd/utilityscripts/recursiveReplaceStrings.qmd
+        - qmd/utilityScripts/validate_biosample_taxonomy.qmd
+        - qmd/utilityScripts/batchRenameFiles.qmd
+        - qmd/utilityScripts/recursiveReplaceStrings.qmd
       - section: "Hydra Analysis Scripts"
         contents:
-        - qmd/hydrascripts/BLAST_18s_28s.qmd
-        - qmd/hydrascripts/GetOrganelle.qmd
-        - qmd/hydrascripts/Go_fetch.qmd
+        - qmd/hydraScripts/BLAST_18s_28s.qmd
+        - qmd/hydraScripts/GetOrganelle.qmd
+        - qmd/hydraScripts/Go_fetch.qmd
 
 format:
   html:

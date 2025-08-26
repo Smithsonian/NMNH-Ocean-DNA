@@ -1,0 +1,21 @@
+metadata datadir
+genohub-1249488_WHF2_mapfile.csv genohub-1249488_WHF2
+genohub-2054899_OKEX01_mapfile.csv genohub-2054899_OKEX01/22030-14-10302024_182921
+genohub-3150331_NovaSeq06-03_mapfile.csv genohub-3150331_NovaSeq06-03/22030-15-10252024_135909
+genohub-3461655_20250616-CTFISH-Pool-A_mapfile.csv genohub-3461655_CTFISH-Pools-A-and-B/PoolA
+genohub-3461655_20250616-CTFISH-Pool-B_mapfile.csv genohub-3461655_CTFISH-Pools-A-and-B/PoolB
+genohub-4893991_OKEX04_mapfile.csv genohub-4893991_OKEX04
+genohub-5156466_GulfofAlaskaZP_mapfile.csv genohub-5156466_GulfofAlaskaZP
+genohub-5386521_NovaSeq04-GSkimNSL_mapfile.csv genohub-5386521_NovaSeq04-GSkimNSL/22030-04-11302022
+genohub-6027983_Bigelow_mapfile.csv genohub-6027983_Bigelow
+genohub-7303356_NovaSeq06-02_mapfile.csv genohub-7303356_NovaSeq06-02/22030-13-10142024_155152
+genohub-7553727_NovaSeq05-Lane1_mapfile.csv genohub-7553727_NovaSeq05-Lane1
+genohub-7553727_NovaSeq05-Lane2_mapfile.csv genohub-7553727_NovaSeq05-Lane2
+genohub-7737220_OKEX03_mapfile.csv genohub-7737220_OKEX03
+genohub-8459898_Vietnam-update-03-18-25_mapfile.csv genohub-8459898_Vietnam
+genohub-8679160_NovaSeq06-01_mapfile.csv genohub-8679160_NovaSeq06-01/raw_fastq
+genohub-8689107_OKEX02_mapfile.csv genohub-8689107_OKEX02
+genohub-8939998_WHF1_mapfile.csv genohub-8939998_WHF1
+genohub-9269705_BRRedos_mapfile.csv genohub-9269705_BRRedos
+genohub-9971427_BOEM-OKEX-Mix_mapfile.csv genohub-9971427_BOEM-OKEX-Mix
+

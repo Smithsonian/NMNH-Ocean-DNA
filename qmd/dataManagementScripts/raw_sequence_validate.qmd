@@ -1,0 +1,52 @@
+# Validate Hydra Store raw sequence data and metadata 
+
+Script name: `validate_seq_data.py` or `validate_seq_data.sh`
+
+[python source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/validate_seq_data.py)
+
+[bash source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/validate_seq_data.sh)
+
+Validates Ocean DNA raw sequence data against its corresponding metadata. The python script is faster than the bash script.
+
+To download the script:
+
+```bash
+# download python script
+wget https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/validate_seq_data.py
+```
+
+```bash
+# download bash script
+wget https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/validate_seq_data.sh
+```
+
+Run `python validate_seq_data.py -h` or `bash validate_seq_data.sh -h` to print the help documentation.
+
+```
+DESCRIPTION:
+    Validates Ocean DNA raw sequence data against its corresponding metadata.
+    This script checks for correct naming, file existence, and ensures that
+    the contents of the metadata file and sequence data directory match.
+
+ARGUMENTS:
+  MAP_FILE
+      Path to a text file mapping metadata to sequence data directories.
+      It requires a header row (which is ignored). Each subsequent line
+      should contain two space-separated columns:
+
+      Column 1: The metadata CSV filename.
+                - Must be in "/store/public/oceandna/raw_sequence_metadata"
+                - Must end with "_mapfile.csv"
+                - Its header must start with "ID,R1,R2,Taxon,UniqueID"
+
+      Column 2: The raw sequence data directory name.
+                - Must be in "/store/public/oceandna/raw_sequence_data"
+                - Must contain one or more .fastq.gz files
+
+OPTIONS:
+  -h, --help
+      Display this help message and exit.
+```
+
+[Example MAP_FILE](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/example_map_file.txt).
+

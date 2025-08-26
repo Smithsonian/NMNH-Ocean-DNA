@@ -1,4 +1,4 @@
-# Data Management Workflow
+# Data management workflow
 
 The following is a proposed data management guide for SI Ocean DNA sequence data. This workflow was designed for genome skimming datasets, but could be adapted for other project types. 
 
