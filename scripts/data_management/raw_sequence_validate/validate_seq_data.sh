@@ -181,7 +181,8 @@ do
             echo "⚠️  ${WARN_COUNT} problem(s) found"
             echo "see ${PRJ}.report.txt for details"
         else
-            echo "✅ no problems to report" >> ${PRJ}.report.txt
+            echo "✅ no problems to report"
+            echo "no problems to report" >> ${PRJ}.report.txt
         fi
         echo "COMPLETE!"
     

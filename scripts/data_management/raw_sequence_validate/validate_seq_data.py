@@ -147,8 +147,9 @@ def validate_project(metadata_filename, seq_data_dir_name):
         print(f"⚠️  {len(report_messages)} problem(s) found")
         print(f"see {report_file_path} for details")
     else:
+        print(f"✅ no problems to report")
         # If no issues were found, add a success message to the report.
-        report_messages.append("✅ no problems to report")
+        report_messages.append("no problems to report")
 
     write_report(report_file_path, report_messages)
     print("COMPLETE!")
