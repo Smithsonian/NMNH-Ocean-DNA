@@ -26,7 +26,7 @@ source ~/.bashrc
 
 This will allow you to run `nextflow` from anywhere on the cluster (if you have the java 21.0.2 module loaded).
 
-Next, we need to download the QC scripts. 
+Next, we need to download the Nextflow workflow and config. 
 
 ```bash
 mkdir ~/DNA_QC_scripts
