@@ -1,0 +1,82 @@
+# DNA sequence data quality control
+
+Script name: `run_DNA_QC.sh`
+
+[Source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_managements/DNA_QC/run_DNA_QC.sh)
+
+Script to generate QC reports for many DNA FASTQ files. Useful to check the quality of a sequencing run prior to downstream analyses. 
+
+This script was written specifically for the Smithsonian [Hydra cluster](https://confluence.si.edu/display/HPC/High+Performance+Computing), but could be modified to work for other computing environments. It uses [FastQC](https://github.com/s-andrews/FastQC) and [MultiQC](https://github.com/MultiQC/MultiQC) to generate reports. It also performs default [fastp](https://github.com/OpenGene/fastp) filtering and generates post-filtering reports.
+
+## Setup
+
+First, you need to download and install [Nextflow](https://www.nextflow.io/docs/latest/index.html#). On Hydra, run the following commands.
+
+```bash
+# Nextflow installation instructions from https://www.nextflow.io/docs/latest/install.html
+cd ~
+module load tools/java/21.0.2
+curl -s https://get.nextflow.io | bash # install Nextflow
+chmod +x nextflow # make Nextflow executable
+mkdir ~/bin # create bin directory, if needed
+mv ~/nextflow ~/bin/nextflow # move nextflow to bin directory
+echo 'export PATH="${HOME}/bin:${PATH}"' >> ~/.bashrc # add bin directory to PATH, in case it's not already there
+source ~/.bashrc
+```
+
+This will allow you to run `nextflow` from anywhere on the cluster (if you have the java 21.0.2 module loaded).
+
+Next, we need to download the QC scripts. 
+
+```bash
+mkdir ~/DNA_QC_scripts
+cd ~/DNA_QC_scripts
+# download the Nextflow workflow
+wget https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_managements/DNA_QC/DNA_QC.nf
+# download the Nextflow config file
+wget https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_managements/DNA_QC/Hydra.nf.config
+```
+
+## Running the script
+
+Decide where you want to store the QC reports and navigate there on the command line. Then download the [`run_DNA_QC.sh`](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_managements/DNA_QC/run_DNA_QC.sh) script. For example:
+
+```bash
+mkdir ~/my_project_QC # create a new directory in your home directory
+cd ~/my_project_QC 
+wget https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_managements/DNA_QC/run_DNA_QC.sh
+```
+
+Now open `run_DNA_QC.sh` and modify the `RAW_DATA_DIR` and `READS_SUFFIX` variables.
+
+- `RAW_DATA_DIR`: Path to a directory containing the sequence data. All files should all be FASTQ and gzipped (i.e. end in ".fastq.gz").
+- `READS_SUFFIX`: The file name suffix linking the forward and reverse reads. For example, if "sampleA" has two paired read files "sampleA_R1.fastq.gz" and "sampleA_R2.fastq.gz", the suffix would be "_R{1,2}.fastq.gz". 
+
+Finally, run the script.
+
+```bash
+bash run_DNA_QC.sh
+```
+
+Output will be written to `QC_results`. To see a summary of all samples, download the HTML files in `QC_results/multiqc` and open with a web browser.
+
+If you have many samples, you may wish to consider running `run_DNA_QC.sh` as a batch job. Note that you will need to use the special workflow manager queue "lTWFM.sq" in order to run Nextflow from a batch job.
+
+## Optional: adjust filtering
+
+You can change the filtering settings by modifying the `shell` section of the `FASTP` process block in the `DNA_QC.nf` workflow. For example, if you want to trim all reads to a maximum length of 100 bp:
+
+```
+    shell:
+    '''
+        fastp -i !{reads[0]} \
+            -I !{reads[1]} \
+            -o !{reads[0].simpleName}_trimmed.fastq.gz \
+            -O !{reads[1].simpleName}_trimmed.fastq.gz \
+            ---max_len 100
+    '''
+```
+
+ See the [fastp CLI reference](https://github.com/OpenGene/fastp?tab=readme-ov-file#all-options) for a complete list of options. 
+
+

@@ -20,6 +20,7 @@ website:
         - qmd/datamanagement.qmd
       - section: "Data Management Scripts"
         contents:
+        - qmd/dataManagementScripts/DNA_QC.qmd
         - qmd/dataManagementScripts/raw_sequence_validate.qmd
       - section: "Utility Scripts"
         contents: 
