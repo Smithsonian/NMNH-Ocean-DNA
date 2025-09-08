@@ -7,5 +7,5 @@ The user should only need to modify the INPUTS section of the script
 
 Script name: `AISO_GetOrganelle_Hydra.sh`
 
-[Source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/Hydra/AISO_GetOrganelle_Hydra.sh)
+[Source code](https://github.com/Smithsonian/NMNH-Ocean-DNA/blob/main/scripts/Hydra/AISO_GetOrganelle_Hydra.sh)
 

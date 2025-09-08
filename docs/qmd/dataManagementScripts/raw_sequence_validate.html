@@ -214,24 +214,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/utilityScripts/validate_biosample_taxonomy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Validate BioProject taxonomy</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/utilityScripts/batchRenameFiles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Batch rename files</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/utilityScripts/recursiveReplaceStrings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Recursive replace strings</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -243,24 +225,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/hydraScripts/BLAST_18s_28s.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">BLAST - find 18s &amp; 28s in genome assembly</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/hydraScripts/GetOrganelle.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GetOrganelle - targeted organelle assembly</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/hydraScripts/Go_fetch.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">go_fetch - download organelle or ribosomal sequences from GenBank</span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -286,14 +250,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="validate-hydra-store-raw-sequence-data-and-metadata" class="level1">
 <h1>Validate Hydra Store raw sequence data and metadata</h1>
 <p>Script name: <code>validate_seq_data.py</code> or <code>validate_seq_data.sh</code></p>
-<p><a href="https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/validate_seq_data.py">python source code</a></p>
-<p><a href="https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/validate_seq_data.sh">bash source code</a></p>
+<p><a href="https://github.com/Smithsonian/NMNH-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/validate_seq_data.py">python source code</a></p>
+<p><a href="https://github.com/Smithsonian/NMNH-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/validate_seq_data.sh">bash source code</a></p>
 <p>Validates Ocean DNA raw sequence data against its corresponding metadata. The python script is faster than the bash script.</p>
 <p>To download the script:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># download python script</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/validate_seq_data.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://raw.githubusercontent.com/Smithsonian/NMNH-Ocean-DNA/refs/heads/main/scripts/data_management/raw_sequence_validate/validate_seq_data.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># download bash script</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/validate_seq_data.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://raw.githubusercontent.com/Smithsonian/NMNH-Ocean-DNA/refs/heads/main/scripts/data_management/raw_sequence_validate/validate_seq_data.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Run <code>python validate_seq_data.py -h</code> or <code>bash validate_seq_data.sh -h</code> to print the help documentation.</p>
 <pre><code>DESCRIPTION:
     Validates Ocean DNA raw sequence data against its corresponding metadata.
@@ -318,7 +282,7 @@ ARGUMENTS:
 OPTIONS:
   -h, --help
       Display this help message and exit.</code></pre>
-<p><a href="https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/example_map_file.txt">Example MAP_FILE</a>.</p>
+<p><a href="https://github.com/Smithsonian/NMNH-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/example_map_file.txt">Example MAP_FILE</a>.</p>
 
 
 </section>

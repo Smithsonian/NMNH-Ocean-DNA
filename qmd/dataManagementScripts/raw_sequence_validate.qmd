@@ -2,9 +2,9 @@
 
 Script name: `validate_seq_data.py` or `validate_seq_data.sh`
 
-[python source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/validate_seq_data.py)
+[python source code](https://github.com/Smithsonian/NMNH-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/validate_seq_data.py)
 
-[bash source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/validate_seq_data.sh)
+[bash source code](https://github.com/Smithsonian/NMNH-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/validate_seq_data.sh)
 
 Validates Ocean DNA raw sequence data against its corresponding metadata. The python script is faster than the bash script.
 
@@ -12,12 +12,12 @@ To download the script:
 
 ```bash
 # download python script
-wget https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/validate_seq_data.py
+wget https://raw.githubusercontent.com/Smithsonian/NMNH-Ocean-DNA/refs/heads/main/scripts/data_management/raw_sequence_validate/validate_seq_data.py
 ```
 
 ```bash
 # download bash script
-wget https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/validate_seq_data.sh
+wget https://raw.githubusercontent.com/Smithsonian/NMNH-Ocean-DNA/refs/heads/main/scripts/data_management/raw_sequence_validate/validate_seq_data.sh
 ```
 
 Run `python validate_seq_data.py -h` or `bash validate_seq_data.sh -h` to print the help documentation.
@@ -48,5 +48,5 @@ OPTIONS:
       Display this help message and exit.
 ```
 
-[Example MAP_FILE](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/example_map_file.txt).
+[Example MAP_FILE](https://github.com/Smithsonian/NMNH-Ocean-DNA/blob/main/scripts/data_management/raw_sequence_validate/example_map_file.txt).
 

@@ -2,7 +2,7 @@
 
 Script name: `recursiveReplaceStrings.sh`
 
-[Source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/utils/recursiveReplaceStrings.sh)
+[Source code](https://github.com/Smithsonian/NMNH-Ocean-DNA/blob/main/scripts/utils/recursiveReplaceStrings.sh)
 
 ::: {.callout-warning}
 PLEASE consider making a backup of the target directory before running this script

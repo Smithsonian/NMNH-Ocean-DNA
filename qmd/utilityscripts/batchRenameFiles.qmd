@@ -2,7 +2,7 @@
 
 Script name: `batchRenameFiles.sh`
 
-[Source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/utils/batchRenameFiles.sh)
+[Source code](https://github.com/Smithsonian/NMNH-Ocean-DNA/blob/main/scripts/utils/batchRenameFiles.sh)
 
 Script to quickly rename many files. Can replace all (`-m full`) or part (`-m partial`) of the file names in a target directory.
 
@@ -33,7 +33,7 @@ You can easily convert your table to the correct format using [dos2unix](https:/
 Full replacement mode example:
 ```bash
 # download the script
-wget https://raw.githubusercontent.com/dmacguigan/SI-Ocean-DNA/refs/heads/main/scripts/utils/batchRenameFiles.sh
+wget https://raw.githubusercontent.com/Smithsonian/NMNH-Ocean-DNA/refs/heads/main/scripts/utils/batchRenameFiles.sh
 # make a test directory
 mkdir full_test
 # add some empty test files
@@ -61,7 +61,7 @@ For example, if you want to replace "s_1" with "s_A" and "s_10" with "s_B", you 
 
 ```bash
 # download the script
-wget https://raw.githubusercontent.com/dmacguigan/SI-Ocean-DNA/refs/heads/main/scripts/utils/batchRenameFiles.sh
+wget https://raw.githubusercontent.com/Smithsonian/NMNH-Ocean-DNA/refs/heads/main/scripts/utils/batchRenameFiles.sh
 # make a test directory
 mkdir partial_test
 # add some empty test files

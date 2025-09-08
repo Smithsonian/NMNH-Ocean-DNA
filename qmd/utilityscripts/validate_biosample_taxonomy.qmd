@@ -2,7 +2,7 @@
 
 Script name: `validate_biosample_taxonomy.py`
 
-[Source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/utils/validate_biosample_taxonomy.py)
+[Source code](https://github.com/Smithsonian/NMNH-Ocean-DNA/blob/main/scripts/utils/validate_biosample_taxonomy.py)
 
 This python script checks the taxonomy between all GenBank nucleotide records and associated BioSamples in a specific BioProject. 
 It verifies that the `ORGANISM` field of the GenBank record matches the BioSample `OrganismName`.

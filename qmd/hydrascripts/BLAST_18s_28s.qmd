@@ -4,14 +4,14 @@
 
 Script name: `BLAST_18s-28s_hydra.sh`
 
-[source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/Hydra/BLAST_Hydra/BLAST_18s-28s_hydra.sh)
+[source code](https://github.com/Smithsonian/NMNH-Ocean-DNA/blob/main/scripts/Hydra/BLAST_Hydra/BLAST_18s-28s_hydra.sh)
 
 This script is meant to help identify and extract contigs/scaffolds containing the 18s and 28s genes.
 
 To download the script:
 
 ```bash
-wget https://raw.githubusercontent.com/dmacguigan/SI-Ocean-DNA/refs/heads/main/scripts/Hydra/BLAST_Hydra/BLAST_18s-28s_hydra.sh
+wget https://raw.githubusercontent.com/Smithsonian/NMNH-Ocean-DNA/refs/heads/main/scripts/Hydra/BLAST_Hydra/BLAST_18s-28s_hydra.sh
 ```
 
 Try running `bash batchRenameFiles.sh -h` to print the help documentation.
@@ -38,13 +38,13 @@ bash BLAST_18s-28s_hydra.sh -c my_contigs.fasta -i my_sample_ID -s my_18s.fasta 
 
 Script name: `BLAST_job.sh`
 
-[source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/Hydra/BLAST_Hydra/BLAST_job.sh)
+[source code](https://github.com/Smithsonian/NMNH-Ocean-DNA/blob/main/scripts/Hydra/BLAST_Hydra/BLAST_job.sh)
 
 This script is a wrapper for `BLAST_18s-28s_hydra.sh`, allowing you analyze multiple genome assemblies.
 
 To download the script:
 ```bash
-wget https://raw.githubusercontent.com/dmacguigan/SI-Ocean-DNA/refs/heads/main/scripts/Hydra/BLAST_Hydra/BLAST_job.sh
+wget https://raw.githubusercontent.com/Smithsonian/NMNH-Ocean-DNA/refs/heads/main/scripts/Hydra/BLAST_Hydra/BLAST_job.sh
 ```
 
 You will then need to modify the `INPUTS` section.

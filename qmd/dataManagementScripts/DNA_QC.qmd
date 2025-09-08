@@ -2,7 +2,7 @@
 
 Script name: `run_DNA_QC.sh`
 
-[Source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/DNA_QC/run_DNA_QC.sh)
+[Source code](https://github.com/Smithsonian/NMNH-Ocean-DNA/blob/main/scripts/data_management/DNA_QC/run_DNA_QC.sh)
 
 Script to generate QC reports for many DNA FASTQ files. Useful to check the quality of a sequencing run prior to downstream analyses. 
 
@@ -32,19 +32,19 @@ Next, we need to download the Nextflow workflow and config.
 mkdir ~/DNA_QC_scripts
 cd ~/DNA_QC_scripts
 # download the Nextflow workflow
-wget https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/DNA_QC/DNA_QC.nf
+wget https://raw.githubusercontent.com/Smithsonian/NMNH-Ocean-DNA/refs/heads/main/scripts/data_management/DNA_QC/DNA_QC.nf
 # download the Nextflow config file
-wget https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/DNA_QC/Hydra.nf.config
+wget https://raw.githubusercontent.com/Smithsonian/NMNH-Ocean-DNA/refs/heads/main/scripts/data_management/DNA_QC/Hydra.nf.config
 ```
 
 ## Running the script
 
-Decide where you want to store the QC reports and navigate there on the command line. Then download the [`run_DNA_QC.sh`](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/DNA_QC/run_DNA_QC.sh) script. For example:
+Decide where you want to store the QC reports and navigate there on the command line. Then download the [`run_DNA_QC.sh`](https://github.com/Smithsonian/NMNH-Ocean-DNA/blob/main/scripts/data_management/DNA_QC/run_DNA_QC.sh) script. For example:
 
 ```bash
 mkdir ~/my_project_QC # create a new directory in your home directory
 cd ~/my_project_QC 
-wget https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/DNA_QC/run_DNA_QC.sh
+wget https://raw.githubusercontent.com/Smithsonian/NMNH-Ocean-DNA/refs/heads/main/scripts/data_management/DNA_QC/run_DNA_QC.sh
 ```
 
 Now open `run_DNA_QC.sh` and modify the `RAW_DATA_DIR` and `READS_SUFFIX` variables.

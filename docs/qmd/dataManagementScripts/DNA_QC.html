@@ -214,24 +214,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/utilityScripts/validate_biosample_taxonomy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Validate BioProject taxonomy</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/utilityScripts/batchRenameFiles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Batch rename files</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/utilityScripts/recursiveReplaceStrings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Recursive replace strings</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -243,24 +225,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/hydraScripts/BLAST_18s_28s.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">BLAST - find 18s &amp; 28s in genome assembly</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/hydraScripts/GetOrganelle.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GetOrganelle - targeted organelle assembly</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../qmd/hydraScripts/Go_fetch.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">go_fetch - download organelle or ribosomal sequences from GenBank</span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -291,7 +255,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="dna-sequence-data-quality-control" class="level1">
 <h1>DNA sequence data quality control</h1>
 <p>Script name: <code>run_DNA_QC.sh</code></p>
-<p><a href="https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/DNA_QC/run_DNA_QC.sh">Source code</a></p>
+<p><a href="https://github.com/Smithsonian/NMNH-Ocean-DNA/blob/main/scripts/data_management/DNA_QC/run_DNA_QC.sh">Source code</a></p>
 <p>Script to generate QC reports for many DNA FASTQ files. Useful to check the quality of a sequencing run prior to downstream analyses.</p>
 <p>This script was written specifically for the Smithsonian <a href="https://confluence.si.edu/display/HPC/High+Performance+Computing">Hydra cluster</a>, but could be modified to work for other computing environments. It uses <a href="https://github.com/s-andrews/FastQC">FastQC</a> and <a href="https://github.com/MultiQC/MultiQC">MultiQC</a> to generate reports. It also performs default <a href="https://github.com/OpenGene/fastp">fastp</a> filtering and generates post-filtering reports.</p>
 <section id="setup" class="level2">
@@ -311,16 +275,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/DNA_QC_scripts</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/DNA_QC_scripts</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># download the Nextflow workflow</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/DNA_QC/DNA_QC.nf</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://raw.githubusercontent.com/Smithsonian/NMNH-Ocean-DNA/refs/heads/main/scripts/data_management/DNA_QC/DNA_QC.nf</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># download the Nextflow config file</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/DNA_QC/Hydra.nf.config</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://raw.githubusercontent.com/Smithsonian/NMNH-Ocean-DNA/refs/heads/main/scripts/data_management/DNA_QC/Hydra.nf.config</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="running-the-script" class="level2">
 <h2 class="anchored" data-anchor-id="running-the-script">Running the script</h2>
-<p>Decide where you want to store the QC reports and navigate there on the command line. Then download the <a href="https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/DNA_QC/run_DNA_QC.sh"><code>run_DNA_QC.sh</code></a> script. For example:</p>
+<p>Decide where you want to store the QC reports and navigate there on the command line. Then download the <a href="https://github.com/Smithsonian/NMNH-Ocean-DNA/blob/main/scripts/data_management/DNA_QC/run_DNA_QC.sh"><code>run_DNA_QC.sh</code></a> script. For example:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/my_project_QC <span class="co"># create a new directory in your home directory</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/my_project_QC </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/DNA_QC/run_DNA_QC.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://raw.githubusercontent.com/Smithsonian/NMNH-Ocean-DNA/refs/heads/main/scripts/data_management/DNA_QC/run_DNA_QC.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now open <code>run_DNA_QC.sh</code> and modify the <code>RAW_DATA_DIR</code> and <code>READS_SUFFIX</code> variables.</p>
 <ul>
 <li><code>RAW_DATA_DIR</code>: Path to a directory containing the sequence data. All files should all be FASTQ and gzipped (i.e.&nbsp;end in “.fastq.gz”).</li>
