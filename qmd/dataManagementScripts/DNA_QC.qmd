@@ -2,7 +2,7 @@
 
 Script name: `run_DNA_QC.sh`
 
-[Source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_managements/DNA_QC/run_DNA_QC.sh)
+[Source code](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/DNA_QC/run_DNA_QC.sh)
 
 Script to generate QC reports for many DNA FASTQ files. Useful to check the quality of a sequencing run prior to downstream analyses. 
 
@@ -32,19 +32,19 @@ Next, we need to download the QC scripts.
 mkdir ~/DNA_QC_scripts
 cd ~/DNA_QC_scripts
 # download the Nextflow workflow
-wget https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_managements/DNA_QC/DNA_QC.nf
+wget https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/DNA_QC/DNA_QC.nf
 # download the Nextflow config file
-wget https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_managements/DNA_QC/Hydra.nf.config
+wget https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/DNA_QC/Hydra.nf.config
 ```
 
 ## Running the script
 
-Decide where you want to store the QC reports and navigate there on the command line. Then download the [`run_DNA_QC.sh`](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_managements/DNA_QC/run_DNA_QC.sh) script. For example:
+Decide where you want to store the QC reports and navigate there on the command line. Then download the [`run_DNA_QC.sh`](https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/DNA_QC/run_DNA_QC.sh) script. For example:
 
 ```bash
 mkdir ~/my_project_QC # create a new directory in your home directory
 cd ~/my_project_QC 
-wget https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_managements/DNA_QC/run_DNA_QC.sh
+wget https://github.com/dmacguigan/SI-Ocean-DNA/blob/main/scripts/data_management/DNA_QC/run_DNA_QC.sh
 ```
 
 Now open `run_DNA_QC.sh` and modify the `RAW_DATA_DIR` and `READS_SUFFIX` variables.
@@ -60,7 +60,7 @@ bash run_DNA_QC.sh
 
 Output will be written to `QC_results`. To see a summary of all samples, download the HTML files in `QC_results/multiqc` and open with a web browser.
 
-If you have many samples, you may wish to consider running `run_DNA_QC.sh` as a batch job. Note that you will need to use the special workflow manager queue "lTWFM.sq" in order to run Nextflow from a batch job.
+If you have many samples, consider running `run_DNA_QC.sh` as a batch job with [qsub](https://hydra-7.si.edu/tools/QSubGen/). You will need to use the special workflow manager queue "lTWFM.sq" in order to run Nextflow inside of a batch job.
 
 ## Optional: adjust filtering
 
@@ -73,7 +73,7 @@ You can change the filtering settings by modifying the `shell` section of the `F
             -I !{reads[1]} \
             -o !{reads[0].simpleName}_trimmed.fastq.gz \
             -O !{reads[1].simpleName}_trimmed.fastq.gz \
-            ---max_len 100
+            --max_len 100
     '''
 ```
 
