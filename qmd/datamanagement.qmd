@@ -1,60 +1,121 @@
-# Data management workflow
+# Ocean DNA data and compute resources
+
+The Ocean DNA group has access to the following disk storage systems:
+
+- [Hydra cluster](https://confluence.si.edu/display/HPC/High+Performance+Computing) scratch
+  - ***/scratch/nmnh_ocean_dna***
+  - **40 TB**
+  - Not backed up by Hydra admin
+  - No automatic file purging
+- [Hydra cluster](https://confluence.si.edu/display/HPC/High+Performance+Computing) store
+  - ***/store/nmnh_ocean_dna***
+  - **40 TB**
+  - Not backed up by Hydra admin
+  - No automatic file purging
+  - Intended for large raw data files and inactive projects
+  - Slower read/write speeds
+  - Can't be used for active analysis
+- Smithsonian network P drive
+  - ***smb://si-ocio-qnas2.si.edu/nmnh/nmnh-all/public/nmnh-ocean-dna***
+  - **80 TB**
+  - Incrementally backed up daily
+  - Fully backed up weekly
+  - Only accessible from SI computers
+
+The Hydra spaces 
+
+# Data management flowchart
 
 The following is a proposed data management guide for SI Ocean DNA sequence data. This workflow was designed for genome skimming datasets, but could be adapted for other project types. 
-
-::: {.callout-important}
-Please see the `README.md` the Ocean DNA Hydra Store directory for details about where to upload raw data and how to name files and directories.
-:::
 
 ```{mermaid}
 graph TD;
 
-  GenoHub[**GenoHub**
-Demultiplexed and compressed sequence reads in FASTQ format. Files should end in “.fastq.gz” or “.fq.gz”]
-  Metadata[**Metadata CSV**
-Information for all samples in the GenoHub project. Must include the following columns:
-***ID:*** GenoHub sample name
-***R1:*** read 1 FASTQ file name
-***R2:*** read 2 FASTQ file name
-***Taxon:*** your best guess at taxonomic assignment
-***UniqID:*** unique identifier linked to a voucher/tissue sample
-  ]
+  GenoHub[**GenoHub**]
+  Metadata[**Map File**]
   Analyses(Run quality/adapter trimming, mitogenome assembly, etc)
-  Scratch[(**Hydra Scratch**
-/scratch/nmnh_ocean_dna
-40 TB. Not backed up, no automatic file purging.)]
-  Store[(**Hydra Store**
-/store/public/oceandna
-40 TB. Not backed up, no automatic file purging. For large raw data files and inactive projects. Drive system is slower, can't be used for active analysis)]
-  PDrive[(**P Drive**
-P:&bsol;NMNH-OCEAN-DNA
-80 TB. Incrementally backed up daily, fully backed up weekly. Only accessible from SI computers.)]
+  Scratch[(**Hydra Scratch**)]
+  Store[(**Hydra Store**)]
+  PDrive[(**P Drive**)]
   
-  Move1[download raw FASTQ files]  
+  Move0[STEP 2: create map file]
+  Move1[STEP 1: download FASTQs]  
   Move3[copy important results]
-  Move4[Dan M. runs monthly and on-demand backup]
+  Move4[STEP 3: move to Hydra Store]
+  Move5[STEP 4: backup to P drive]
 
-  Metadata-->Store
+  Move0-->Metadata
+  Metadata-->Move4
   GenoHub-->Move1
-  Move1-->Store
+  GenoHub-->Move0
+  Scratch-->Move4
   Move1-->Scratch
   subgraph " "
     Scratch-->Analyses
     Analyses-->Move3
     Move3-->Store
+    Move4-->Store
   end
-  Store-->Move4
-  Move4-->PDrive
+  Store-->Move5
+  Move5-->PDrive
 
   classDef process stroke:black,color:white,fill:#159BD7,stroke-dasharray: 5 5
   classDef storage stroke:black,color:white,fill:#159BD7
   classDef ccr stroke:black,color:white,fill:#159BD7
+  classDef step stroke:black,color:black,fill:#a0c5fa,stroke-dasharray: 5 5
 
-  class Rename,Analyses,Move1,Move2,Move3,Move4 process
+  class Rename,Analyses,Move2,Move3 process
   class Metadata,GenoHub,Scratch,Store,PDrive storage
+  class Move0,Move1,Move4,Move5 step
 
   click Rename "bestpractices.html"
 
   linkStyle default stroke:grey, stroke-width:4px
 
 ```
+
+# Step-by-step data management workflow
+
+Below are step-by-step instructions for our data management workflow.
+
+## STEP 1: download from GenoHub
+
+Demultiplexed and compressed sequence reads in FASTQ format. Files should end in “.fastq.gz” or “.fq.gz”
+
+Directions on how to download from GenoHub to Hydra
+
+Directions on uploading data from your computer to Hydra
+
+## STEP 2: create the sequence data map file
+
+CSV containing information for all samples in the GenoHub project. Map file name conventions...
+
+The first five columns of your map file must be:
+
+- ***ID:*** GenoHub sample name
+- ***R1:*** read 1 FASTQ file name
+- ***R2:*** read 2 FASTQ file name
+- ***Taxon:*** your best guess at taxonomic assignment
+- ***UniqID:*** identifier linked to a voucher/tissue sample
+
+Missing data in any of these columns is not permissible.
+
+Feel free to include other metadata as additional columns in the map file.
+
+## STEP 3: move sequence data and map file to Hydra Store
+
+- directory locations
+- directory naming conventions
+- options for safely copying large amount of data
+  - cp: bad
+  - rclone
+  - Globus
+
+## STEP 4: backup Hydra Store to P drive
+
+- notify Dan after you have added data to Hydra Store
+- Dan will backup to the P drive
+- Dan is the only one with access to the P drive right now
+
+
+
