@@ -266,7 +266,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Data management guide</h1>
 <section id="ocean-dna-data-storage-and-compute-resources" class="level2">
 <h2 class="anchored" data-anchor-id="ocean-dna-data-storage-and-compute-resources">Ocean DNA data storage and compute resources</h2>
-<p>The Ocean DNA group has access to the following disk storage systems:</p>
+<p>The Ocean DNA group has access to the following disk storage. Please be mindful that these are shared resources.</p>
 <ul>
 <li><a href="https://confluence.si.edu/display/HPC/High+Performance+Computing">Hydra cluster</a> scratch
 <ul>
@@ -283,22 +283,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>No automatic file purging</li>
 <li>Intended for large raw data files and inactive projects</li>
 <li>Slower read/write speeds</li>
-<li>Can’t be used for active analysis</li>
+<li>Can not be used for active analysis (not mounted on compute nodes)</li>
 </ul></li>
 <li>Smithsonian network P drive
 <ul>
 <li><strong><em>smb://si-ocio-qnas2.si.edu/nmnh/nmnh-all/public/nmnh-ocean-dna</em></strong></li>
 <li><strong>80 TB</strong></li>
+<li>Separate system from Hyrda, managed by OCIO</li>
 <li>Incrementally backed up daily</li>
 <li>Fully backed up weekly</li>
-<li>Only accessible from SI computers</li>
+<li>Only accessible from Smithsonian computers</li>
 </ul></li>
 </ul>
-<p>The Hydra spaces</p>
 </section>
 <section id="data-management-flowchart" class="level2">
 <h2 class="anchored" data-anchor-id="data-management-flowchart">Data management flowchart</h2>
-<p>The following is a proposed data management guide for SI Ocean DNA sequence data. This workflow was designed for genome skimming datasets, but could be adapted for other project types.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -356,16 +355,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="step-by-step-data-management-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="step-by-step-data-management-workflow">Step-by-step data management workflow</h2>
-<p>Below are step-by-step instructions for our data management workflow.</p>
+<p>Below are step-by-step instructions for our data management workflow. This workflow was designed for genome skimming datasets, but could be modified for other types of sequencing project.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>These instructions only pertain to raw sequence data. We do not have a standardized data management protocol for other data such as trimmed reads or analysis results.</p>
+</div>
+</div>
 <section id="step-1-download-from-genohub" class="level3">
 <h3 class="anchored" data-anchor-id="step-1-download-from-genohub">STEP 1: download from GenoHub</h3>
-<p>GenoHub will provide a link with instructions to download the raw sequence data. The data should be demultiplexed and compressed sequence reads in FASTQ format (i.e.&nbsp;files should end in “.fastq.gz” or “.fq.gz”).</p>
+<p>GenoHub will provide a link with instructions to download the raw sequence data. The data should be demultiplexed, compressed sequence reads in FASTQ format (i.e.&nbsp;files should end in “.fastq.gz” or “.fq.gz”).</p>
 <p>You can download sequence data directly from GenoHub to Hydra using the AWS command line interface. First, load the AWS module and run configuration. Enter the information provided on the GenoHub download instructions page when prompted.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load tools/awscli/2.15.27</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> configure</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Now you can access the AWS storage bucket. To list the contents prior to downloading, run the following, replacing “XXXXXX” with your GenoHub project number.</p>
+<p>Now you can access the AWS storage bucket containing your sequence data. To list the bucket contents prior to downloading, run the following, replacing “XXXXXX” with your GenoHub project number.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> s3 ls s3://genohubXXXXXX</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Run the following command to download your data. Replace “XXXXXX” with your GenoHub project number and specify the path to your desired download location.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> s3 sync s3://genohubXXXXXXX /full/path/to/you/download/directory</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -379,11 +392,10 @@ Note
 <p>We recommend downloading sequence data to <code>/scratch/public/genomics/YOUR_USER_ID</code>. This directory has the fastest read/write speeds and the largest storage quota.</p>
 </div>
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> s3 sync s3://genohubXXXXXXX /full/path/to/you/download/directory</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="step-2-create-the-sequence-data-map-file" class="level3">
 <h3 class="anchored" data-anchor-id="step-2-create-the-sequence-data-map-file">STEP 2: create the sequence data map file</h3>
-<p>The map file is a CSV (comma-separated file) containing information for all samples in the GenoHub project. This file is crucial to ensure that your data are not only backed up, but usable.</p>
+<p>The map file, a comma-separated values (CSV) file, lists all samples in the GenoHub project and is crucial for ensuring your data is both backed up and usable.</p>
 <p>Please use the following naming convention for your map file:</p>
 <pre><code>genohub-{GENOHUB_PROJECT_NUMBER}_{PROJECT_DESCRIPTION}_mapfile.csv</code></pre>
 <p>For example: <code>genohub-8459898_Vietnam_mapfile.csv</code></p>
@@ -483,39 +495,40 @@ Warning
 <p>To create a new directory for your project:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /store/nmnh_ocean_dna/raw_sequence_data</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> genohub-XXXXXX_MY-PROJECT-DESCRIPTION</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You can now copy your sequence data to this directory. There are many options, including:</p>
+<p>You can now copy your sequence data to this directory. There are many ways to copy data, including:</p>
 <ul>
+<li>“Drag and drop” with a file browser (not recommended)</li>
 <li>The Linux <code>cp</code> command (not recommended)
 <ul>
-<li>copies one file at a time, fairly slow</li>
-<li>does not check for complete file transfer, which can lead to corrupt files at the destination</li>
+<li>Copies one file at a time, fairly slow</li>
+<li>Does not check for complete file transfer, which can lead to corrupt files at the destination</li>
 </ul></li>
 <li><a href="https://rclone.org/">rclone</a>
 <ul>
-<li>available on Hydra with <code>module load XXXXXX</code></li>
-<li>copies multiple files in parallel</li>
-<li>automatically performs checks to ensure complete file transfer</li>
-<li>can resume an interrupted transfer by running the same <code>rclone</code> command again</li>
-<li>example usage:
+<li>Available on Hydra with <code>module load XXXXXX</code></li>
+<li>Copies multiple files in parallel</li>
+<li>Automatically performs checks to ensure complete file transfer</li>
+<li>Can resume an interrupted transfer by running the same <code>rclone</code> command again</li>
+<li>Example usage:
 <ul>
-<li>perform a “dry run” (list files but do not copy):</li>
+<li>Perform a “dry run” (list files but do not copy):</li>
 </ul>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> <span class="at">-n</span> /PATH/TO/SOURCE /PATH/TO/DESTINATION</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>copy files:</li>
+<li>Copy files:</li>
 </ul>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> /PATH/TO/SOURCE /PATH/TO/DESTINATION</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>copy only files that end in “.fastq.gz”</li>
+<li>Copy only files that end in “.fastq.gz”</li>
 </ul>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> <span class="at">--include</span> <span class="st">"*.fastq.gz"</span> /PATH/TO/SOURCE /PATH/TO/DESTINATION</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
 <li><a href="https://www.globus.org/">Globus</a>
 <ul>
-<li>web-based file transfer service</li>
-<li>normally used to transfer data between servers, but can also perform data transfers within Hydra</li>
-<li>does not require you to maintain an active connection to Hydra while files transfer</li>
-<li>see the <a href="https://confluence.si.edu/display/HPC/Globus">documentation</a> for additional information</li>
+<li>Web-based file transfer service</li>
+<li>Normally used to transfer data between servers, but can also perform data transfers within Hydra</li>
+<li>Does not require you to maintain an active connection to Hydra while files transfer</li>
+<li>See the <a href="https://confluence.si.edu/display/HPC/Globus">documentation</a> for additional information</li>
 </ul></li>
 </ul>
 </section>

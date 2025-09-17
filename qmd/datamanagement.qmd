@@ -2,7 +2,7 @@
 
 ## Ocean DNA data storage and compute resources
 
-The Ocean DNA group has access to the following disk storage systems:
+The Ocean DNA group has access to the following disk storage. Please be mindful that these are shared resources.
 
 - [Hydra cluster](https://confluence.si.edu/display/HPC/High+Performance+Computing) scratch
   - ***/scratch/nmnh_ocean_dna***
@@ -16,19 +16,16 @@ The Ocean DNA group has access to the following disk storage systems:
   - No automatic file purging
   - Intended for large raw data files and inactive projects
   - Slower read/write speeds
-  - Can't be used for active analysis
+  - Can not be used for active analysis (not mounted on compute nodes)
 - Smithsonian network P drive
   - ***smb://si-ocio-qnas2.si.edu/nmnh/nmnh-all/public/nmnh-ocean-dna***
   - **80 TB**
+  - Separate system from Hyrda, managed by OCIO
   - Incrementally backed up daily
   - Fully backed up weekly
-  - Only accessible from SI computers
-
-The Hydra spaces 
+  - Only accessible from Smithsonian computers
 
 ## Data management flowchart
-
-The following is a proposed data management guide for SI Ocean DNA sequence data. This workflow was designed for genome skimming datasets, but could be adapted for other project types. 
 
 ```{mermaid}
 graph TD;
@@ -78,12 +75,17 @@ graph TD;
 
 ## Step-by-step data management workflow
 
-Below are step-by-step instructions for our data management workflow.
+Below are step-by-step instructions for our data management workflow. This workflow was designed for genome skimming datasets, but could be modified for other types of sequencing project. 
+
+::: {.callout-note}
+These instructions only pertain to raw sequence data.
+We do not have a standardized data management protocol for other data such as trimmed reads or analysis results.
+:::
 
 ### STEP 1: download from GenoHub
 
 GenoHub will provide a link with instructions to download the raw sequence data. 
-The data should be demultiplexed and compressed sequence reads in FASTQ format (i.e. files should end in “.fastq.gz” or “.fq.gz”).
+The data should be demultiplexed, compressed sequence reads in FASTQ format (i.e. files should end in “.fastq.gz” or “.fq.gz”).
 
 You can download sequence data directly from GenoHub to Hydra using the AWS command line interface. 
 First, load the AWS module and run configuration. 
@@ -94,8 +96,8 @@ module load tools/awscli/2.15.27
 aws configure
 ```
 
-Now you can access the AWS storage bucket. 
-To list the contents prior to downloading, run the following, replacing "XXXXXX" with your GenoHub project number.
+Now you can access the AWS storage bucket containing your sequence data.
+To list the bucket contents prior to downloading, run the following, replacing "XXXXXX" with your GenoHub project number.
 
 ```bash
 aws s3 ls s3://genohubXXXXXX
@@ -103,18 +105,16 @@ aws s3 ls s3://genohubXXXXXX
 
 Run the following command to download your data. Replace "XXXXXX" with your GenoHub project number and specify the path to your desired download location.
 
+```bash
+aws s3 sync s3://genohubXXXXXXX /full/path/to/you/download/directory
+```
 ::: {.callout-note}
 We recommend downloading sequence data to `/scratch/public/genomics/YOUR_USER_ID`. This directory has the fastest read/write speeds and the largest storage quota.
 :::
 
-```bash
-aws s3 sync s3://genohubXXXXXXX /full/path/to/you/download/directory
-```
-
 ### STEP 2: create the sequence data map file
 
-The map file is a CSV (comma-separated file) containing information for all samples in the GenoHub project. 
-This file is crucial to ensure that your data are not only backed up, but usable.
+The map file, a comma-separated values (CSV) file, lists all samples in the GenoHub project and is crucial for ensuring your data is both backed up and usable.
 
 Please use the following naming convention for your map file:
 
@@ -188,34 +188,35 @@ cd /store/nmnh_ocean_dna/raw_sequence_data
 mkdir genohub-XXXXXX_MY-PROJECT-DESCRIPTION
 ```
 
-You can now copy your sequence data to this directory. There are many options, including:
+You can now copy your sequence data to this directory. There are many ways to copy data, including:
 
+- "Drag and drop" with a file browser (not recommended)
 - The Linux `cp` command (not recommended)
-  - copies one file at a time, fairly slow
-  - does not check for complete file transfer, which can lead to corrupt files at the destination
+  - Copies one file at a time, fairly slow
+  - Does not check for complete file transfer, which can lead to corrupt files at the destination
 - [rclone](https://rclone.org/)
-  - available on Hydra with `module load XXXXXX`
-  - copies multiple files in parallel
-  - automatically performs checks to ensure complete file transfer
-  - can resume an interrupted transfer by running the same `rclone` command again
-  - example usage:
-    - perform a "dry run" (list files but do not copy):
+  - Available on Hydra with `module load XXXXXX`
+  - Copies multiple files in parallel
+  - Automatically performs checks to ensure complete file transfer
+  - Can resume an interrupted transfer by running the same `rclone` command again
+  - Example usage:
+    - Perform a "dry run" (list files but do not copy):
 ```bash
 rclone copy -v -n /PATH/TO/SOURCE /PATH/TO/DESTINATION
 ```
-    - copy files:
+    - Copy files:
 ```bash
 rclone copy -v /PATH/TO/SOURCE /PATH/TO/DESTINATION
 ```
-    - copy only files that end in ".fastq.gz"
+    - Copy only files that end in ".fastq.gz"
 ```bash
 rclone copy -v --include "*.fastq.gz" /PATH/TO/SOURCE /PATH/TO/DESTINATION
 ```
 - [Globus](https://www.globus.org/)
-  - web-based file transfer service
-  - normally used to transfer data between servers, but can also perform data transfers within Hydra
-  - does not require you to maintain an active connection to Hydra while files transfer
-  - see the [documentation](https://confluence.si.edu/display/HPC/Globus) for additional information
+  - Web-based file transfer service
+  - Normally used to transfer data between servers, but can also perform data transfers within Hydra
+  - Does not require you to maintain an active connection to Hydra while files transfer
+  - See the [documentation](https://confluence.si.edu/display/HPC/Globus) for additional information
 
 
 
@@ -231,4 +232,3 @@ You can upload the map file to `raw_sequence_metadata` using your favorite SCP o
 After adding new sequence data and the corresponding map file to Hydra Store, please contact Dan MacGuigan. He will copy your data to the Ocean DNA P drive directory. Data transfer may take several hours, depending on the size of your dataset. 
 
 The P drive is a separate system from Hydra and is backed up frequently by the Smithsonian OCIO. To keep these data backups secure, Dan MacGuigan is the only person with access to the Ocean DNA P drive.
-
