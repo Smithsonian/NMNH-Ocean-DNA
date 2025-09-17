@@ -1,4 +1,6 @@
-# Ocean DNA data and compute resources
+# Data management guide
+
+## Ocean DNA data storage and compute resources
 
 The Ocean DNA group has access to the following disk storage systems:
 
@@ -24,7 +26,7 @@ The Ocean DNA group has access to the following disk storage systems:
 
 The Hydra spaces 
 
-# Data management flowchart
+## Data management flowchart
 
 The following is a proposed data management guide for SI Ocean DNA sequence data. This workflow was designed for genome skimming datasets, but could be adapted for other project types. 
 
@@ -74,48 +76,159 @@ graph TD;
 
 ```
 
-# Step-by-step data management workflow
+## Step-by-step data management workflow
 
 Below are step-by-step instructions for our data management workflow.
 
-## STEP 1: download from GenoHub
+### STEP 1: download from GenoHub
 
-Demultiplexed and compressed sequence reads in FASTQ format. Files should end in “.fastq.gz” or “.fq.gz”
+GenoHub will provide a link with instructions to download the raw sequence data. 
+The data should be demultiplexed and compressed sequence reads in FASTQ format (i.e. files should end in “.fastq.gz” or “.fq.gz”).
 
-Directions on how to download from GenoHub to Hydra
+You can download sequence data directly from GenoHub to Hydra using the AWS command line interface. 
+First, load the AWS module and run configuration. 
+Enter the information provided on the GenoHub download instructions page when prompted.
 
-Directions on uploading data from your computer to Hydra
+```bash
+module load tools/awscli/2.15.27
+aws configure
+```
 
-## STEP 2: create the sequence data map file
+Now you can access the AWS storage bucket. 
+To list the contents prior to downloading, run the following, replacing "XXXXXX" with your GenoHub project number.
 
-CSV containing information for all samples in the GenoHub project. Map file name conventions...
+```bash
+aws s3 ls s3://genohubXXXXXX
+```
+
+Run the following command to download your data. Replace "XXXXXX" with your GenoHub project number and specify the path to your desired download location.
+
+::: {.callout-note}
+We recommend downloading sequence data to `/scratch/public/genomics/YOUR_USER_ID`. This directory has the fastest read/write speeds and the largest storage quota.
+:::
+
+```bash
+aws s3 sync s3://genohubXXXXXXX /full/path/to/you/download/directory
+```
+
+### STEP 2: create the sequence data map file
+
+The map file is a CSV (comma-separated file) containing information for all samples in the GenoHub project. 
+This file is crucial to ensure that your data are not only backed up, but usable.
+
+Please use the following naming convention for your map file:
+
+```
+genohub-{GENOHUB_PROJECT_NUMBER}_{PROJECT_DESCRIPTION}_mapfile.csv
+```
+
+For example: `genohub-8459898_Vietnam_mapfile.csv`
+
+Where "8459898" is the GenoHub project number and "Vietnam" is the description given by the project owner. 
+
+::: {.callout-warning}
+Do not include underscores or spaces in the project description.
+:::
 
 The first five columns of your map file must be:
 
-- ***ID:*** GenoHub sample name
-- ***R1:*** read 1 FASTQ file name
-- ***R2:*** read 2 FASTQ file name
-- ***Taxon:*** your best guess at taxonomic assignment
-- ***UniqID:*** identifier linked to a voucher/tissue sample
+- ***ID:*** GenoHub sample name. For example:
+  - `I-0025-99AD-1N1`
+- ***R1:*** Read 1 FASTQ file name. For example:
+  - `I-0025-99AD-1N1_1.fastq.gz`
+- ***R2:*** Read 2 FASTQ file name. For example:
+  - `I-0025-99AD-1N1_2.fastq.gz`
+- ***Taxon:*** Your best guess at taxonomic assignment, no required format. For example:
+  - Latin binomial: `Urophycis chuss`
+  - Genus: `Urophycis sp.`
+  - Higher level taxonomy: `Phycidae`
+  - Combination: `Gadiformes_Phycidae_Urophycis_chuss`
+- ***UniqID:*** Identifier linked to a voucher/tissue sample, no required format. For example:
+  - USNM catalog number: `USNM 477715`
+  - Biorepository EZID: `http://n2t.net/ark:/65665/3987722bd-99bc-4913-a279-092f58c82d72`
+  - GEOME BCID: `https://n2t.net/ark:/21547/FxY2USNM_Fish_477715.1`
 
-Missing data in any of these columns is not permissible.
+You may include other metadata as additional columns in the map file.
 
-Feel free to include other metadata as additional columns in the map file.
+::: {.callout-note}
+We strongly advise the use of globally/universally unique identifiers (GUIDs/UUIDs) for the `UniqID` column. If you need to generate these IDs, consider creating a project in [GEOME](https://geome-db.org/).
+:::
 
-## STEP 3: move sequence data and map file to Hydra Store
+::: {.callout-important}
+The first five columns must contain information for all samples in the map file. We will contact you if there is any missing data.
+:::
 
-- directory locations
-- directory naming conventions
-- options for safely copying large amount of data
-  - cp: bad
-  - rclone
-  - Globus
+### STEP 3: move sequence data and map file to Hydra Store
 
-## STEP 4: backup Hydra Store to P drive
+The Ocean DNA Store directory on Hydra contains two subdirectories where you should upload your data.
 
-- notify Dan after you have added data to Hydra Store
-- Dan will backup to the P drive
-- Dan is the only one with access to the P drive right now
+#### `/store/nmnh_ocean_dna/raw_sequence_data`
+
+Each directory within `raw_sequence_data` should contain the results of a GenoHub sequencing project. 
+To save disk space, please ensure that all sequence files are compressed (e.g. `sequence1.fastq.gz`).
+
+Please use the following naming convention for your directories:
+
+```
+genohub-{GENOHUB_PROJECT_NUMBER}_{PROJECT_DESCRIPTION}
+```
+
+For example: "genohub-8459898_Vietnam"
+
+Where "8459898" is the GenoHub project number and "Vietnam" is the description given by the project owner.
+
+::: {.callout-warning}
+Do not include underscores or spaces in the project description.
+:::
+
+To create a new directory for your project:
+
+```bash
+cd /store/nmnh_ocean_dna/raw_sequence_data
+mkdir genohub-XXXXXX_MY-PROJECT-DESCRIPTION
+```
+
+You can now copy your sequence data to this directory. There are many options, including:
+
+- The Linux `cp` command (not recommended)
+  - copies one file at a time, fairly slow
+  - does not check for complete file transfer, which can lead to corrupt files at the destination
+- [rclone](https://rclone.org/)
+  - available on Hydra with `module load XXXXXX`
+  - copies multiple files in parallel
+  - automatically performs checks to ensure complete file transfer
+  - can resume an interrupted transfer by running the same `rclone` command again
+  - example usage:
+    - perform a "dry run" (list files but do not copy):
+```bash
+rclone copy -v -n /PATH/TO/SOURCE /PATH/TO/DESTINATION
+```
+    - copy files:
+```bash
+rclone copy -v /PATH/TO/SOURCE /PATH/TO/DESTINATION
+```
+    - copy only files that end in ".fastq.gz"
+```bash
+rclone copy -v --include "*.fastq.gz" /PATH/TO/SOURCE /PATH/TO/DESTINATION
+```
+- [Globus](https://www.globus.org/)
+  - web-based file transfer service
+  - normally used to transfer data between servers, but can also perform data transfers within Hydra
+  - does not require you to maintain an active connection to Hydra while files transfer
+  - see the [documentation](https://confluence.si.edu/display/HPC/Globus) for additional information
 
 
+
+#### `/store/nmnh_ocean_dna/raw_sequence_metadata`
+
+Each directory in `raw_sequence_data` must be accompanied by a CSV map file in `raw_sequence_metadata`. 
+The names of the map files should match the names of the sequence directories (with the addition of `_mapfile.csv`). 
+
+You can upload the map file to `raw_sequence_metadata` using your favorite SCP or SFTP client (e.g. FileZilla, WinSCP, Cyberduck).
+
+### STEP 4: backup Hydra Store to P drive
+
+After adding new sequence data and the corresponding map file to Hydra Store, please contact Dan MacGuigan. He will copy your data to the Ocean DNA P drive directory. Data transfer may take several hours, depending on the size of your dataset. 
+
+The P drive is a separate system from Hydra and is backed up frequently by the Smithsonian OCIO. To keep these data backups secure, Dan MacGuigan is the only person with access to the Ocean DNA P drive.
 

@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -97,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qmd/datamanagement.html">Data Management</a></li><li class="breadcrumb-item"><a href="../qmd/datamanagement.html">Ocean DNA data and compute resources</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qmd/datamanagement.html">Data Management</a></li><li class="breadcrumb-item"><a href="../qmd/datamanagement.html">Data management guide</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -146,7 +181,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../qmd/datamanagement.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Ocean DNA data and compute resources</span></a>
+ <span class="menu-text">Data management guide</span></a>
   </div>
 </li>
       </ul>
@@ -206,7 +241,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ocean-dna-data-and-compute-resources" id="toc-ocean-dna-data-and-compute-resources" class="nav-link active" data-scroll-target="#ocean-dna-data-and-compute-resources">Ocean DNA data and compute resources</a></li>
+  <li><a href="#data-management-guide" id="toc-data-management-guide" class="nav-link active" data-scroll-target="#data-management-guide">Data management guide</a>
+  <ul class="collapse">
+  <li><a href="#ocean-dna-data-storage-and-compute-resources" id="toc-ocean-dna-data-storage-and-compute-resources" class="nav-link" data-scroll-target="#ocean-dna-data-storage-and-compute-resources">Ocean DNA data storage and compute resources</a></li>
   <li><a href="#data-management-flowchart" id="toc-data-management-flowchart" class="nav-link" data-scroll-target="#data-management-flowchart">Data management flowchart</a></li>
   <li><a href="#step-by-step-data-management-workflow" id="toc-step-by-step-data-management-workflow" class="nav-link" data-scroll-target="#step-by-step-data-management-workflow">Step-by-step data management workflow</a>
   <ul class="collapse">
@@ -215,17 +252,20 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#step-3-move-sequence-data-and-map-file-to-hydra-store" id="toc-step-3-move-sequence-data-and-map-file-to-hydra-store" class="nav-link" data-scroll-target="#step-3-move-sequence-data-and-map-file-to-hydra-store">STEP 3: move sequence data and map file to Hydra Store</a></li>
   <li><a href="#step-4-backup-hydra-store-to-p-drive" id="toc-step-4-backup-hydra-store-to-p-drive" class="nav-link" data-scroll-target="#step-4-backup-hydra-store-to-p-drive">STEP 4: backup Hydra Store to P drive</a></li>
   </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qmd/datamanagement.html">Data Management</a></li><li class="breadcrumb-item"><a href="../qmd/datamanagement.html">Ocean DNA data and compute resources</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qmd/datamanagement.html">Data Management</a></li><li class="breadcrumb-item"><a href="../qmd/datamanagement.html">Data management guide</a></li></ol></nav></header>
 
 
 
 
-<section id="ocean-dna-data-and-compute-resources" class="level1">
-<h1>Ocean DNA data and compute resources</h1>
+<section id="data-management-guide" class="level1">
+<h1>Data management guide</h1>
+<section id="ocean-dna-data-storage-and-compute-resources" class="level2">
+<h2 class="anchored" data-anchor-id="ocean-dna-data-storage-and-compute-resources">Ocean DNA data storage and compute resources</h2>
 <p>The Ocean DNA group has access to the following disk storage systems:</p>
 <ul>
 <li><a href="https://confluence.si.edu/display/HPC/High+Performance+Computing">Hydra cluster</a> scratch
@@ -256,8 +296,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>The Hydra spaces</p>
 </section>
-<section id="data-management-flowchart" class="level1">
-<h1>Data management flowchart</h1>
+<section id="data-management-flowchart" class="level2">
+<h2 class="anchored" data-anchor-id="data-management-flowchart">Data management flowchart</h2>
 <p>The following is a proposed data management guide for SI Ocean DNA sequence data. This workflow was designed for genome skimming datasets, but could be adapted for other project types.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
@@ -314,51 +354,184 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="step-by-step-data-management-workflow" class="level1">
-<h1>Step-by-step data management workflow</h1>
+<section id="step-by-step-data-management-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="step-by-step-data-management-workflow">Step-by-step data management workflow</h2>
 <p>Below are step-by-step instructions for our data management workflow.</p>
-<section id="step-1-download-from-genohub" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-download-from-genohub">STEP 1: download from GenoHub</h2>
-<p>Demultiplexed and compressed sequence reads in FASTQ format. Files should end in “.fastq.gz” or “.fq.gz”</p>
-<p>Directions on how to download from GenoHub to Hydra</p>
-<p>Directions on uploading data from your computer to Hydra</p>
+<section id="step-1-download-from-genohub" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-download-from-genohub">STEP 1: download from GenoHub</h3>
+<p>GenoHub will provide a link with instructions to download the raw sequence data. The data should be demultiplexed and compressed sequence reads in FASTQ format (i.e.&nbsp;files should end in “.fastq.gz” or “.fq.gz”).</p>
+<p>You can download sequence data directly from GenoHub to Hydra using the AWS command line interface. First, load the AWS module and run configuration. Enter the information provided on the GenoHub download instructions page when prompted.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load tools/awscli/2.15.27</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> configure</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now you can access the AWS storage bucket. To list the contents prior to downloading, run the following, replacing “XXXXXX” with your GenoHub project number.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> s3 ls s3://genohubXXXXXX</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Run the following command to download your data. Replace “XXXXXX” with your GenoHub project number and specify the path to your desired download location.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We recommend downloading sequence data to <code>/scratch/public/genomics/YOUR_USER_ID</code>. This directory has the fastest read/write speeds and the largest storage quota.</p>
+</div>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> s3 sync s3://genohubXXXXXXX /full/path/to/you/download/directory</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="step-2-create-the-sequence-data-map-file" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-create-the-sequence-data-map-file">STEP 2: create the sequence data map file</h2>
-<p>CSV containing information for all samples in the GenoHub project. Map file name conventions…</p>
+<section id="step-2-create-the-sequence-data-map-file" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-create-the-sequence-data-map-file">STEP 2: create the sequence data map file</h3>
+<p>The map file is a CSV (comma-separated file) containing information for all samples in the GenoHub project. This file is crucial to ensure that your data are not only backed up, but usable.</p>
+<p>Please use the following naming convention for your map file:</p>
+<pre><code>genohub-{GENOHUB_PROJECT_NUMBER}_{PROJECT_DESCRIPTION}_mapfile.csv</code></pre>
+<p>For example: <code>genohub-8459898_Vietnam_mapfile.csv</code></p>
+<p>Where “8459898” is the GenoHub project number and “Vietnam” is the description given by the project owner.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Do not include underscores or spaces in the project description.</p>
+</div>
+</div>
 <p>The first five columns of your map file must be:</p>
 <ul>
-<li><strong><em>ID:</em></strong> GenoHub sample name</li>
-<li><strong><em>R1:</em></strong> read 1 FASTQ file name</li>
-<li><strong><em>R2:</em></strong> read 2 FASTQ file name</li>
-<li><strong><em>Taxon:</em></strong> your best guess at taxonomic assignment</li>
-<li><strong><em>UniqID:</em></strong> identifier linked to a voucher/tissue sample</li>
+<li><strong><em>ID:</em></strong> GenoHub sample name. For example:
+<ul>
+<li><code>I-0025-99AD-1N1</code></li>
+</ul></li>
+<li><strong><em>R1:</em></strong> Read 1 FASTQ file name. For example:
+<ul>
+<li><code>I-0025-99AD-1N1_1.fastq.gz</code></li>
+</ul></li>
+<li><strong><em>R2:</em></strong> Read 2 FASTQ file name. For example:
+<ul>
+<li><code>I-0025-99AD-1N1_2.fastq.gz</code></li>
+</ul></li>
+<li><strong><em>Taxon:</em></strong> Your best guess at taxonomic assignment, no required format. For example:
+<ul>
+<li>Latin binomial: <code>Urophycis chuss</code></li>
+<li>Genus: <code>Urophycis sp.</code></li>
+<li>Higher level taxonomy: <code>Phycidae</code></li>
+<li>Combination: <code>Gadiformes_Phycidae_Urophycis_chuss</code></li>
+</ul></li>
+<li><strong><em>UniqID:</em></strong> Identifier linked to a voucher/tissue sample, no required format. For example:
+<ul>
+<li>USNM catalog number: <code>USNM 477715</code></li>
+<li>Biorepository EZID: <code>http://n2t.net/ark:/65665/3987722bd-99bc-4913-a279-092f58c82d72</code></li>
+<li>GEOME BCID: <code>https://n2t.net/ark:/21547/FxY2USNM_Fish_477715.1</code></li>
+</ul></li>
 </ul>
-<p>Missing data in any of these columns is not permissible.</p>
-<p>Feel free to include other metadata as additional columns in the map file.</p>
+<p>You may include other metadata as additional columns in the map file.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We strongly advise the use of globally/universally unique identifiers (GUIDs/UUIDs) for the <code>UniqID</code> column. If you need to generate these IDs, consider creating a project in <a href="https://geome-db.org/">GEOME</a>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The first five columns must contain information for all samples in the map file. We will contact you if there is any missing data.</p>
+</div>
+</div>
 </section>
-<section id="step-3-move-sequence-data-and-map-file-to-hydra-store" class="level2">
-<h2 class="anchored" data-anchor-id="step-3-move-sequence-data-and-map-file-to-hydra-store">STEP 3: move sequence data and map file to Hydra Store</h2>
+<section id="step-3-move-sequence-data-and-map-file-to-hydra-store" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-move-sequence-data-and-map-file-to-hydra-store">STEP 3: move sequence data and map file to Hydra Store</h3>
+<p>The Ocean DNA Store directory on Hydra contains two subdirectories where you should upload your data.</p>
+<section id="storenmnh_ocean_dnaraw_sequence_data" class="level4">
+<h4 class="anchored" data-anchor-id="storenmnh_ocean_dnaraw_sequence_data"><code>/store/nmnh_ocean_dna/raw_sequence_data</code></h4>
+<p>Each directory within <code>raw_sequence_data</code> should contain the results of a GenoHub sequencing project. To save disk space, please ensure that all sequence files are compressed (e.g.&nbsp;<code>sequence1.fastq.gz</code>).</p>
+<p>Please use the following naming convention for your directories:</p>
+<pre><code>genohub-{GENOHUB_PROJECT_NUMBER}_{PROJECT_DESCRIPTION}</code></pre>
+<p>For example: “genohub-8459898_Vietnam”</p>
+<p>Where “8459898” is the GenoHub project number and “Vietnam” is the description given by the project owner.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Do not include underscores or spaces in the project description.</p>
+</div>
+</div>
+<p>To create a new directory for your project:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /store/nmnh_ocean_dna/raw_sequence_data</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> genohub-XXXXXX_MY-PROJECT-DESCRIPTION</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can now copy your sequence data to this directory. There are many options, including:</p>
 <ul>
-<li>directory locations</li>
-<li>directory naming conventions</li>
-<li>options for safely copying large amount of data
+<li>The Linux <code>cp</code> command (not recommended)
 <ul>
-<li>cp: bad</li>
-<li>rclone</li>
-<li>Globus</li>
+<li>copies one file at a time, fairly slow</li>
+<li>does not check for complete file transfer, which can lead to corrupt files at the destination</li>
+</ul></li>
+<li><a href="https://rclone.org/">rclone</a>
+<ul>
+<li>available on Hydra with <code>module load XXXXXX</code></li>
+<li>copies multiple files in parallel</li>
+<li>automatically performs checks to ensure complete file transfer</li>
+<li>can resume an interrupted transfer by running the same <code>rclone</code> command again</li>
+<li>example usage:
+<ul>
+<li>perform a “dry run” (list files but do not copy):</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> <span class="at">-n</span> /PATH/TO/SOURCE /PATH/TO/DESTINATION</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>copy files:</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> /PATH/TO/SOURCE /PATH/TO/DESTINATION</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>copy only files that end in “.fastq.gz”</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> <span class="at">--include</span> <span class="st">"*.fastq.gz"</span> /PATH/TO/SOURCE /PATH/TO/DESTINATION</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+<li><a href="https://www.globus.org/">Globus</a>
+<ul>
+<li>web-based file transfer service</li>
+<li>normally used to transfer data between servers, but can also perform data transfers within Hydra</li>
+<li>does not require you to maintain an active connection to Hydra while files transfer</li>
+<li>see the <a href="https://confluence.si.edu/display/HPC/Globus">documentation</a> for additional information</li>
 </ul></li>
 </ul>
 </section>
-<section id="step-4-backup-hydra-store-to-p-drive" class="level2">
-<h2 class="anchored" data-anchor-id="step-4-backup-hydra-store-to-p-drive">STEP 4: backup Hydra Store to P drive</h2>
-<ul>
-<li>notify Dan after you have added data to Hydra Store</li>
-<li>Dan will backup to the P drive</li>
-<li>Dan is the only one with access to the P drive right now</li>
-</ul>
+<section id="storenmnh_ocean_dnaraw_sequence_metadata" class="level4">
+<h4 class="anchored" data-anchor-id="storenmnh_ocean_dnaraw_sequence_metadata"><code>/store/nmnh_ocean_dna/raw_sequence_metadata</code></h4>
+<p>Each directory in <code>raw_sequence_data</code> must be accompanied by a CSV map file in <code>raw_sequence_metadata</code>. The names of the map files should match the names of the sequence directories (with the addition of <code>_mapfile.csv</code>).</p>
+<p>You can upload the map file to <code>raw_sequence_metadata</code> using your favorite SCP or SFTP client (e.g.&nbsp;FileZilla, WinSCP, Cyberduck).</p>
+</section>
+</section>
+<section id="step-4-backup-hydra-store-to-p-drive" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-backup-hydra-store-to-p-drive">STEP 4: backup Hydra Store to P drive</h3>
+<p>After adding new sequence data and the corresponding map file to Hydra Store, please contact Dan MacGuigan. He will copy your data to the Ocean DNA P drive directory. Data transfer may take several hours, depending on the size of your dataset.</p>
+<p>The P drive is a separate system from Hydra and is backed up frequently by the Smithsonian OCIO. To keep these data backups secure, Dan MacGuigan is the only person with access to the Ocean DNA P drive.</p>
 
 
+</section>
 </section>
 </section>
 
