@@ -75,7 +75,7 @@ graph TD;
 
 ## Step-by-step data management workflow
 
-Below are step-by-step instructions for our data management workflow. This workflow was designed for genome skimming datasets, but could be modified for other types of sequencing project. 
+Below are step-by-step instructions for our data management workflow. This workflow was designed for genome skimming datasets, but could be modified for other types of sequencing projects. 
 
 ::: {.callout-note}
 These instructions only pertain to raw sequence data.
@@ -162,7 +162,9 @@ The first five columns must contain information for all samples in the map file.
 
 The Ocean DNA Store directory on Hydra contains two subdirectories where you should upload your data.
 
-#### `/store/nmnh_ocean_dna/raw_sequence_data`
+<span style="font-size: 20px;">
+**1. /store/nmnh_ocean_dna/raw_sequence_data**
+</span>
 
 Each directory within `raw_sequence_data` should contain the results of a GenoHub sequencing project. 
 To save disk space, please ensure that all sequence files are compressed (e.g. `sequence1.fastq.gz`).
@@ -218,9 +220,9 @@ rclone copy -v --include "*.fastq.gz" /PATH/TO/SOURCE /PATH/TO/DESTINATION
   - Does not require you to maintain an active connection to Hydra while files transfer
   - See the [documentation](https://confluence.si.edu/display/HPC/Globus) for additional information
 
-
-
-#### `/store/nmnh_ocean_dna/raw_sequence_metadata`
+<span style="font-size: 20px;">
+**2. /store/nmnh_ocean_dna/raw_sequence_metadata**
+</span>
 
 Each directory in `raw_sequence_data` must be accompanied by a CSV map file in `raw_sequence_metadata`. 
 The names of the map files should match the names of the sequence directories (with the addition of `_mapfile.csv`). 

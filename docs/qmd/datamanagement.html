@@ -355,7 +355,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="step-by-step-data-management-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="step-by-step-data-management-workflow">Step-by-step data management workflow</h2>
-<p>Below are step-by-step instructions for our data management workflow. This workflow was designed for genome skimming datasets, but could be modified for other types of sequencing project.</p>
+<p>Below are step-by-step instructions for our data management workflow. This workflow was designed for genome skimming datasets, but could be modified for other types of sequencing projects.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -472,8 +472,7 @@ Important
 <section id="step-3-move-sequence-data-and-map-file-to-hydra-store" class="level3">
 <h3 class="anchored" data-anchor-id="step-3-move-sequence-data-and-map-file-to-hydra-store">STEP 3: move sequence data and map file to Hydra Store</h3>
 <p>The Ocean DNA Store directory on Hydra contains two subdirectories where you should upload your data.</p>
-<section id="storenmnh_ocean_dnaraw_sequence_data" class="level4">
-<h4 class="anchored" data-anchor-id="storenmnh_ocean_dnaraw_sequence_data"><code>/store/nmnh_ocean_dna/raw_sequence_data</code></h4>
+<p><span style="font-size: 20px;"> <strong>1. /store/nmnh_ocean_dna/raw_sequence_data</strong> </span></p>
 <p>Each directory within <code>raw_sequence_data</code> should contain the results of a GenoHub sequencing project. To save disk space, please ensure that all sequence files are compressed (e.g.&nbsp;<code>sequence1.fastq.gz</code>).</p>
 <p>Please use the following naming convention for your directories:</p>
 <pre><code>genohub-{GENOHUB_PROJECT_NUMBER}_{PROJECT_DESCRIPTION}</code></pre>
@@ -531,12 +530,9 @@ Warning
 <li>See the <a href="https://confluence.si.edu/display/HPC/Globus">documentation</a> for additional information</li>
 </ul></li>
 </ul>
-</section>
-<section id="storenmnh_ocean_dnaraw_sequence_metadata" class="level4">
-<h4 class="anchored" data-anchor-id="storenmnh_ocean_dnaraw_sequence_metadata"><code>/store/nmnh_ocean_dna/raw_sequence_metadata</code></h4>
+<p><span style="font-size: 20px;"> <strong>2. /store/nmnh_ocean_dna/raw_sequence_metadata</strong> </span></p>
 <p>Each directory in <code>raw_sequence_data</code> must be accompanied by a CSV map file in <code>raw_sequence_metadata</code>. The names of the map files should match the names of the sequence directories (with the addition of <code>_mapfile.csv</code>).</p>
 <p>You can upload the map file to <code>raw_sequence_metadata</code> using your favorite SCP or SFTP client (e.g.&nbsp;FileZilla, WinSCP, Cyberduck).</p>
-</section>
 </section>
 <section id="step-4-backup-hydra-store-to-p-drive" class="level3">
 <h3 class="anchored" data-anchor-id="step-4-backup-hydra-store-to-p-drive">STEP 4: backup Hydra Store to P drive</h3>
