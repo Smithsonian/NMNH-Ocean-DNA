@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "SI Ocean DNA"
+  title: "Smithsonian NMNH Ocean DNA"
   navbar:
     background: primary
     search: true
