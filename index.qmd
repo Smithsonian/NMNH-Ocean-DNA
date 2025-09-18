@@ -1,12 +1,12 @@
 ---
-title: "Smithsonian NMNH Ocean DNA"
+title: "Smithsonian National Museum of Natural History Ocean DNA"
 ---
 
 Welcome to the Smithsonian NMNH Ocean DNA computational resources website. Here you will find data management guides, analytical workflows, and helpful utility scripts.
 
 ## What is Ocean DNA?
 
-[Ocean DNA](https://naturalhistory.si.edu/initiatives/oceans/ocean-science-center/ocean-dna) is a coordinated effort across the [Smithsonian National Museum of Natural History](https://www.si.edu/museums/natural-history-museum) to leverage our collections and adopt museum practices to support the use of DNA sequencing to survey marine life and assess ocean health. We place a special emphasis on undiscovered “dark taxa" that may play a critical role in ecosystems.
+[Ocean DNA](https://naturalhistory.si.edu/initiatives/oceans/ocean-science-center/ocean-dna) is a coordinated effort across the [Smithsonian National Museum of Natural History](https://naturalhistory.si.edu/) to leverage our collections and adopt museum practices to support the use of DNA sequencing to survey marine life and assess ocean health. We place a special emphasis on undiscovered “dark taxa" that may play a critical role in ecosystems.
 
 Ocean DNA will develop trusted genetic reference libraries to serve emerging sequence-based biodiversity technologies, unlocking the full potential of environmental DNA. Ocean DNA will improve genetic-based surveys of marine life to inform policy, conservation, and the sustainable use of marine resources. 
 
