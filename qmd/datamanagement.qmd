@@ -145,7 +145,7 @@ The first five columns of your map file must be:
   - Combination: `Gadiformes_Phycidae_Urophycis_chuss`
 - ***UniqID:*** Identifier linked to a voucher/tissue sample, no required format. For example:
   - USNM catalog number: `USNM 477715`
-  - Biorepository EZID: `http://n2t.net/ark:/65665/3987722bd-99bc-4913-a279-092f58c82d72`
+  - EMu EZID: `http://n2t.net/ark:/65665/3987722bd-99bc-4913-a279-092f58c82d72`
   - GEOME BCID: `https://n2t.net/ark:/21547/FxY2USNM_Fish_477715.1`
 
 You may include other metadata as additional columns in the map file.
