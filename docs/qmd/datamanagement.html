@@ -574,6 +574,59 @@ Warning
 <h3 class="anchored" data-anchor-id="step-4-backup-hydra-store-to-p-drive">STEP 4: backup Hydra Store to P drive</h3>
 <p>After adding new sequence data and the corresponding map file to Hydra Store, please contact Dan MacGuigan. He will copy your data to the Ocean DNA P drive directory. Data transfer may take several hours, depending on the size of your dataset.</p>
 <p>The P drive is a separate system from Hydra and is backed up frequently by the Smithsonian OCIO. To keep these data backups secure, Dan MacGuigan is the only person with access to the Ocean DNA P drive.</p>
+<p><span style="font-size: 20px;"> <strong>Instructions for Data Manager:</strong> </span></p>
+<p>Below are the general instructions for backing up data on Hydra Store to the P drive. These instructions are specifically for Mac OS, but could be modified to work on a Windows PC.</p>
+<p>To access the P drive, you will need a Smithsonian computer connected to SI-staff wifi or plugged into the SI ethernet. You will also need to be added as a user to the Ocean DNA P drive. Our NMNH IT contact for help with network drives is Joshua Henry.</p>
+<p>First, we need to validate that map files and raw data directories contain the same files. <strong><em>Instructions for this step are forthcoming.</em></strong></p>
+<p>Next, establish a connection with the P drive. In the Mac menu bar, select <code>Go &gt; Connect to Server</code> and enter the following address:</p>
+<pre><code>smb://si-ocio-qnas2.si.edu/nmnh/nmnh-all/public/nmnh-ocean-dna</code></pre>
+<p>This will open a new finder window. The P drive structure is as follows:</p>
+<ul>
+<li>Hydra_backup
+<ul>
+<li>store
+<ul>
+<li>raw_sequence_data</li>
+<li>raw_squence_metadata</li>
+<li>raw_sequence_metadata_backups</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>There are other directories, but these are the relevant ones for our data management purposes.</p>
+<p>Prior to copying new map files to the P drive, you should make a backup of the existing directory. Open the <code>store</code> directory in the terminal and run the following commands. For <code>MONTH_DAY_YEAR</code>, please use the format <code>09_26_25</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> raw_sequence_metadata raw_sequence_metadata_backups/raw_sequence_metadata_MONTH_DAY_YEAR</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> raw_sequence_metadata_backups</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-zcvf</span> raw_sequence_metadata_MONTH_DAY_YEAR.tar.gz raw_sequence_metadata_MONTH_DAY_YEAR</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> raw_sequence_metadata_MONTH_DAY_YEAR</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We will use Rclone to copy data from Hydra directly to the P drive. Installation instructions are available <a href="https://rclone.org/install/">here</a>.</p>
+<p>If this is the first time using Rclone to connect to Hydra, run <code>rclone config</code>. Select the following options:</p>
+<ul>
+<li>n - New remote</li>
+<li>name&gt; SI-Hydra</li>
+<li>storage&gt; 48 (check the list, 48 should be for sftp)</li>
+<li>host&gt; hydra-login01.si.edu</li>
+<li>user&gt; YOUR_USER_ID</li>
+</ul>
+<p>For all other config questions, press enter to accept the default values and choose <code>n</code> when asked “Edit advanced config?”. When finished, enter <code>q</code> to quit to config setup.</p>
+<p>We can now copy data to/from Hydra using Rclone.</p>
+<blockquote class="blockquote">
+<p><code>rclone copy</code></p>
+<p>Copy the source to the destination. Does not transfer files that are identical on source and destination, testing by size and modification time or MD5SUM. Doesn’t delete files from the destination.</p>
+<p>Note that it is always the contents of the directory that is synced, not the directory itself. So when source:path is a directory, it’s the contents of source:path that are copied, not the directory name and contents.</p>
+</blockquote>
+<p>Note that after Rclone copies a file, it will calculate and compare checksums to ensure successful file transfer.</p>
+<p>First we’ll copy the metadata. On the command line, run the following:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Volumes/nmnh-ocean-dna/Hydra_backup/store/raw_sequence_metadata</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> <span class="at">-n</span> SI-Hydra:/store/public/oceandna/raw_sequence_metadata . </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>-v</code> tells Rclone to produce verbose output, <code>-c</code> tell Rclone to use checksums, <code>-n</code> tells Rclone to perform a “dry run”, listing files and sizes but not copying</p>
+<p>If this dry run looks good, initiate the transfer with:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> SI-Hydra:/store/public/oceandna/raw_sequence_metadata . </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The metadata should copy quickly. Now let’s do the same process for the sequence data.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Volumes/nmnh-ocean-dna/Hydra_backup/store/raw_sequence_data</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> <span class="at">-n</span> SI-Hydra:/store/public/oceandna/raw_sequence_data . </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And again, if the dry run looks good, proceed with transfer.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> SI-Hydra:/store/public/oceandna/raw_sequence_data . </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If either transfer is interrupted, simply rerun the command to resume.</p>
 
 
 </section>

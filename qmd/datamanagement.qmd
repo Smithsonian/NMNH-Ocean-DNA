@@ -234,3 +234,95 @@ You can upload the map file to `raw_sequence_metadata` using your favorite SCP o
 After adding new sequence data and the corresponding map file to Hydra Store, please contact Dan MacGuigan. He will copy your data to the Ocean DNA P drive directory. Data transfer may take several hours, depending on the size of your dataset. 
 
 The P drive is a separate system from Hydra and is backed up frequently by the Smithsonian OCIO. To keep these data backups secure, Dan MacGuigan is the only person with access to the Ocean DNA P drive.
+
+<span style="font-size: 20px;">
+**Instructions for Data Manager:**
+</span>
+
+Below are the general instructions for backing up data on Hydra Store to the P drive. These instructions are specifically for Mac OS, but could be modified to work on a Windows PC.
+
+To access the P drive, you will need a Smithsonian computer connected to SI-staff wifi or plugged into the SI ethernet. You will also need to be added as a user to the Ocean DNA P drive. Our NMNH IT contact for help with network drives is Joshua Henry.
+
+First, we need to validate that map files and raw data directories contain the same files. ***Instructions for this step are forthcoming.***
+
+Next, establish a connection with the P drive. In the Mac menu bar, select `Go > Connect to Server` and enter the following address:
+
+```
+smb://si-ocio-qnas2.si.edu/nmnh/nmnh-all/public/nmnh-ocean-dna
+```
+
+This will open a new finder window. The P drive structure is as follows:
+
+- Hydra_backup
+  - store
+    - raw_sequence_data
+    - raw_squence_metadata
+    - raw_sequence_metadata_backups
+
+There are other directories, but these are the relevant ones for our data management purposes. 
+
+Prior to copying new map files to the P drive, you should make a backup of the existing directory. Open the `store` directory in the terminal and run the following commands. For `MONTH_DAY_YEAR`, please use the format `09_26_25`.
+
+```bash
+cp -r raw_sequence_metadata raw_sequence_metadata_backups/raw_sequence_metadata_MONTH_DAY_YEAR
+cd raw_sequence_metadata_backups
+tar -zcvf raw_sequence_metadata_MONTH_DAY_YEAR.tar.gz raw_sequence_metadata_MONTH_DAY_YEAR
+rm -r raw_sequence_metadata_MONTH_DAY_YEAR
+```
+
+We will use Rclone to copy data from Hydra directly to the P drive. Installation instructions are available [here](https://rclone.org/install/).
+
+If this is the first time using Rclone to connect to Hydra, run `rclone config`. Select the following options:
+
+- n - New remote
+- name> SI-Hydra
+- storage> 48 (check the list, 48 should be for sftp)
+- host> hydra-login01.si.edu
+- user> YOUR_USER_ID
+
+For all other config questions, press enter to accept the default values and choose `n` when asked "Edit advanced config?". When finished, enter `q` to quit to config setup.
+
+We can now copy data to/from Hydra using Rclone.
+
+> `rclone copy`
+> 
+> Copy the source to the destination.  Does not transfer files that are
+> identical on source and destination, testing by size and modification
+> time or MD5SUM.  Doesn't delete files from the destination. 
+> 
+> Note that it is always the contents of the directory that is synced,
+not the directory itself. So when source:path is a directory, it's the
+contents of source:path that are copied, not the directory name and
+contents.
+
+Note that after Rclone copies a file, it will calculate and compare checksums to ensure successful file transfer.
+
+First we'll copy the metadata. On the command line, run the following:
+
+```bash
+cd /Volumes/nmnh-ocean-dna/Hydra_backup/store/raw_sequence_metadata
+rclone copy -v -n SI-Hydra:/store/public/oceandna/raw_sequence_metadata . 
+```
+
+`-v` tells Rclone to produce verbose output, `-c` tell Rclone to use checksums, `-n` tells Rclone to perform a "dry run", listing files and sizes but not copying
+
+If this dry run looks good, initiate the transfer with:
+
+```bash
+rclone copy -v SI-Hydra:/store/public/oceandna/raw_sequence_metadata . 
+```
+
+The metadata should copy quickly. Now let's do the same process for the sequence data.
+
+```bash
+cd /Volumes/nmnh-ocean-dna/Hydra_backup/store/raw_sequence_data
+rclone copy -v -n SI-Hydra:/store/public/oceandna/raw_sequence_data . 
+```
+
+And again, if the dry run looks good, proceed with transfer.
+
+```bash
+rclone copy -v SI-Hydra:/store/public/oceandna/raw_sequence_data . 
+```
+
+If either transfer is interrupted, simply rerun the command to resume.
