@@ -6,17 +6,19 @@ The Ocean DNA group has access to the following disk storage. Please be mindful 
 
 - [Hydra cluster](https://confluence.si.edu/display/HPC/High+Performance+Computing) scratch
   - ***/scratch/nmnh_ocean_dna***
-  - **40 TB**
+  - **90 TB**
   - Not backed up by Hydra admin
   - No automatic file purging
+  - Accessible by all NMNH Ocean DNA users
 - [Hydra cluster](https://confluence.si.edu/display/HPC/High+Performance+Computing) store
   - ***/store/nmnh_ocean_dna***
-  - **40 TB**
+  - **70 TB**
   - Not backed up by Hydra admin
   - No automatic file purging
   - Intended for large raw data files and inactive projects
   - Slower read/write speeds
   - Can not be used for active analysis (not mounted on compute nodes)
+  - Accessible by all NMNH Ocean DNA users
 - Smithsonian network P drive
   - ***smb://si-ocio-qnas2.si.edu/nmnh/nmnh-all/public/nmnh-ocean-dna***
   - **80 TB**
@@ -24,6 +26,7 @@ The Ocean DNA group has access to the following disk storage. Please be mindful 
   - Incrementally backed up daily
   - Fully backed up weekly
   - Only accessible from Smithsonian computers
+  - Access limited to NMNH Ocean DNA data managers
 
 ## Data management flowchart
 
@@ -326,3 +329,13 @@ rclone copy -v SI-Hydra:/store/public/oceandna/raw_sequence_data .
 ```
 
 If either transfer is interrupted, simply rerun the command to resume.
+
+**Important:** after backing up sequence data to the P drive, the data manager should make all of the FASTQ files on Store read-only. This will mitigate the risk of accidental overwrite or deletion. 
+
+Run the following command in the relevant sequence data folders on Store. This will make all `fastq.gz` files read-only for their owners and the Ocean DNA group.
+
+```bash
+chmod 440 *.fastq.gz
+```
+
+More info about `chmod` can be found [here](https://chmod-calculator.com/).

@@ -307,19 +307,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://confluence.si.edu/display/HPC/High+Performance+Computing">Hydra cluster</a> scratch
 <ul>
 <li><strong><em>/scratch/nmnh_ocean_dna</em></strong></li>
-<li><strong>40 TB</strong></li>
+<li><strong>90 TB</strong></li>
 <li>Not backed up by Hydra admin</li>
 <li>No automatic file purging</li>
+<li>Accessible by all NMNH Ocean DNA users</li>
 </ul></li>
 <li><a href="https://confluence.si.edu/display/HPC/High+Performance+Computing">Hydra cluster</a> store
 <ul>
 <li><strong><em>/store/nmnh_ocean_dna</em></strong></li>
-<li><strong>40 TB</strong></li>
+<li><strong>70 TB</strong></li>
 <li>Not backed up by Hydra admin</li>
 <li>No automatic file purging</li>
 <li>Intended for large raw data files and inactive projects</li>
 <li>Slower read/write speeds</li>
 <li>Can not be used for active analysis (not mounted on compute nodes)</li>
+<li>Accessible by all NMNH Ocean DNA users</li>
 </ul></li>
 <li>Smithsonian network P drive
 <ul>
@@ -329,6 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Incrementally backed up daily</li>
 <li>Fully backed up weekly</li>
 <li>Only accessible from Smithsonian computers</li>
+<li>Access limited to NMNH Ocean DNA data managers</li>
 </ul></li>
 </ul>
 </section>
@@ -627,6 +630,10 @@ Warning
 <p>And again, if the dry run looks good, proceed with transfer.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> SI-Hydra:/store/public/oceandna/raw_sequence_data . </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If either transfer is interrupted, simply rerun the command to resume.</p>
+<p><strong>Important:</strong> after backing up sequence data to the P drive, the data manager should make all of the FASTQ files on Store read-only. This will mitigate the risk of accidental overwrite or deletion.</p>
+<p>Run the following command in the relevant sequence data folders on Store. This will make all <code>fastq.gz</code> files read-only for their owners and the Ocean DNA group.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 440 <span class="pp">*</span>.fastq.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>More info about <code>chmod</code> can be found <a href="https://chmod-calculator.com/">here</a>.</p>
 
 
 </section>
