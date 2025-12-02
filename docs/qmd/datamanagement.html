@@ -543,7 +543,7 @@ Warning
 </ul></li>
 <li><a href="https://rclone.org/">rclone</a>
 <ul>
-<li>Available on Hydra with <code>module load XXXXXX</code></li>
+<li>Available on Hydra with <code>module load tools/rclone/1.66.0</code></li>
 <li>Copies multiple files in parallel</li>
 <li>Automatically performs checks to ensure complete file transfer</li>
 <li>Can resume an interrupted transfer by running the same <code>rclone</code> command again</li>
@@ -631,8 +631,8 @@ Warning
 <div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> SI-Hydra:/store/public/oceandna/raw_sequence_data . </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If either transfer is interrupted, simply rerun the command to resume.</p>
 <p><strong>Important:</strong> after backing up sequence data to the P drive, the data manager should make all of the FASTQ files on Store read-only. This will mitigate the risk of accidental overwrite or deletion.</p>
-<p>Run the following command in the relevant sequence data folders on Store. This will make all <code>fastq.gz</code> files read-only for their owners and the Ocean DNA group.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 440 <span class="pp">*</span>.fastq.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Run the following command in the relevant sequence data folders on Store. This will make all <code>fastq.gz</code> files read-only..</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 444 <span class="pp">*</span>.fastq.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>More info about <code>chmod</code> can be found <a href="https://chmod-calculator.com/">here</a>.</p>
 
 
