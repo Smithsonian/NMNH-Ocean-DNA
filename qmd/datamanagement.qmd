@@ -167,13 +167,14 @@ Where "8459898" is the GenoHub project number and "Vietnam" is the description g
 If you sequenced with the NMNH LAB, please use the following naming convention for your map file:
 
 ```
-LAB-{LAB_SEQUENCING_ID}_{PROJECT_DESCRIPTION}_mapfile.csv
+LAB-{LAB_RUN_NAME}_{PROJECT_DESCRIPTION}_mapfile.csv
 ```
 
 For example: `LAB-240925VL008474AAG5MNMM5_IRL-2024-07_mapfile.csv`
 
-Where "240925VL008474AAG5MNMM5" is the LAB sequencing run ID and and "IRL-2024-07" is the description given by the project owner. 
-If you do not know the LAB sequencing run ID, please contact LAB personnel.
+Where "240925VL008474AAG5MNMM5" is the LAB sequencing run name (with underscores removed) and "IRL-2024-07" is your description of the sequencing project. 
+
+The sequencing run name can be found in the HTML report included in the Dropbox folder from LAB. 
 
 ::: {.callout-warning}
 Do not include underscores or spaces in the project description.
@@ -235,13 +236,14 @@ Where "8459898" is the GenoHub project number and "Vietnam" is the description g
 For LAB sequencing projects, please use the following naming convention for your directories:
 
 ```
-LAB-{LAB_SEQUENCING_ID}_{PROJECT_DESCRIPTION}_mapfile.csv
+LAB-{LAB_RUN_NAME}_{PROJECT_DESCRIPTION}
 ```
 
-For example: "LAB-240925VL008474AAG5MNMM5_IRL-2024-07"
+For example: `LAB-240925VL008474AAG5MNMM5_IRL-2024-07`
 
-Where "240925VL008474AAG5MNMM5" is the LAB sequencing run ID and and "IRL-2024-07" is the description given by the project owner. 
-If you do not know the LAB sequencing run ID, please contact LAB personnel.
+Where "240925VL008474AAG5MNMM5" is the LAB sequencing run name (with underscores removed) and "IRL-2024-07" is your description of the sequencing project. 
+
+The sequencing run name can be found in the HTML report included in the Dropbox folder from LAB. 
 
 ::: {.callout-warning}
 Do not include underscores or spaces in the project description.
