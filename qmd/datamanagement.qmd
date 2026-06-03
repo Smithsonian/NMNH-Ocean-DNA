@@ -118,9 +118,33 @@ Run the following command to download your data. Replace "XXXXXX" with your Geno
 aws s3 sync s3://genohubXXXXXXX /full/path/to/you/download/directory
 ```
 
-#### LAB
+#### NMNH LAB
 
-If your sequencing was done at LAB....
+If your sequencing was done at the NMNH LAB, you will receive a Dropbox link containing your sequence data. You can directly download the sequence data to your computer, then upload to Hydra with your [method of choice](https://confluence.si.edu/spaces/HPC/pages/163152227/Transferring+Files+to+from+Hydra).
+
+Alternatively, you can download sequence data directly from Dropbox to Hydra using [rclone](https://rclone.org/). Advantages of `rclone`:
+
+  - Available on Hydra with `module load tools/rclone/1.66.0`
+  - Copies multiple files in parallel
+  - Automatically performs checks to ensure complete file transfer
+  - Can resume an interrupted transfer by running the same `rclone` command again
+
+See instructions [here](https://rclone.org/dropbox/) for accessing Dropbox with rclone.
+
+`rclone` example usage:
+
+    - Perform a "dry run" (list files but do not copy):
+```bash
+rclone copy -v -n DROPBOX_REMOTE_NAME:/PATH/TO/DATA/ON/DROPBOX /PATH/TO/DESTINATION/ON/HYDRA
+```
+    - Copy files:
+```bash
+copy -v DROPBOX_REMOTE_NAME:/PATH/TO/DATA/ON/DROPBOX /PATH/TO/DESTINATION/ON/HYDRA
+```
+    - Copy only files that end in ".fastq.gz"
+```bash
+rclone copy -v --include "*.fastq.gz" DROPBOX_REMOTE_NAME:/PATH/TO/DATA/ON/DROPBOX /PATH/TO/DESTINATION/ON/HYDRA
+```
 
 ### STEP 2: create the sequence data map file
 
@@ -138,7 +162,7 @@ For example: `genohub-8459898_Vietnam_mapfile.csv`
 
 Where "8459898" is the GenoHub project number and "Vietnam" is the description given by the project owner. 
 
-#### LAB
+#### NMNH LAB
 
 If you sequenced with the NMNH LAB, please use the following naming convention for your map file:
 
@@ -188,7 +212,7 @@ The first five columns must contain information for all samples in the map file.
 The Ocean DNA Store directory on Hydra contains two subdirectories where you should upload your data.
 
 <span style="font-size: 20px;">
-**1. /store/nmnh_ocean_dna/raw_sequence_data**
+**1. /store/nmnh_ocean_dna/public/raw_sequence_data**
 </span>
 
 Each directory within `raw_sequence_data` should contain the results of a sequencing project. 
@@ -226,7 +250,7 @@ Do not include underscores or spaces in the project description.
 To create a new directory for your project:
 
 ```bash
-cd /store/nmnh_ocean_dna/raw_sequence_data
+cd /store/nmnh_ocean_dna/public/raw_sequence_data
 mkdir genohub-XXXXXX_MY-PROJECT-DESCRIPTION
 ```
 
@@ -261,7 +285,7 @@ rclone copy -v --include "*.fastq.gz" /PATH/TO/SOURCE /PATH/TO/DESTINATION
   - See the [documentation](https://confluence.si.edu/display/HPC/Globus) for additional information
 
 <span style="font-size: 20px;">
-**2. /store/nmnh_ocean_dna/raw_sequence_metadata**
+**2. /store/nmnh_ocean_dna/public/raw_sequence_metadata**
 </span>
 
 Each directory in `raw_sequence_data` must be accompanied by a CSV map file in `raw_sequence_metadata`. 
@@ -310,9 +334,9 @@ tar -zcvf raw_sequence_metadata_YEAR-MONTH-DAY.tar.gz raw_sequence_metadata_YEAR
 rm -r raw_sequence_metadata_YEAR-MONTH-DAY
 ```
 
-We will use Rclone to copy data from Hydra directly to the P drive. Installation instructions are available [here](https://rclone.org/install/).
+We will use `rclone` to copy data from Hydra directly to the P drive. Installation instructions are available [here](https://rclone.org/install/).
 
-If this is the first time using Rclone to connect to Hydra, run `rclone config`. Select the following options:
+If this is the first time using `rclone` to connect to Hydra, run `rclone config`. Select the following options:
 
 - n - New remote
 - name> SI-Hydra
@@ -335,34 +359,34 @@ not the directory itself. So when source:path is a directory, it's the
 contents of source:path that are copied, not the directory name and
 contents.
 
-Note that after Rclone copies a file, it will calculate and compare checksums to ensure successful file transfer.
+Note that after `rclone` copies a file, it will calculate and compare checksums to ensure successful file transfer.
 
 First we'll copy the metadata. On the command line, run the following:
 
 ```bash
-cd /Volumes/nmnh-ocean-dna/Hydra_backup/store/raw_sequence_metadata
-rclone copy -v -n SI-Hydra:/store/public/oceandna/raw_sequence_metadata . 
+cd /Volumes/nmnh-ocean-dna/Hydra_backup/store/public/raw_sequence_metadata
+rclone copy -v -n SI-Hydra:/store/nmnh_ocean_dna/public/raw_sequence_metadata/ . 
 ```
 
-`-v` tells Rclone to produce verbose output, `-c` tell Rclone to use checksums, `-n` tells Rclone to perform a "dry run", listing files and sizes but not copying
+`-v` tells `rclone` to produce verbose output, `-c` tell Rclone to use checksums, `-n` tells `rclone` to perform a "dry run", listing files and sizes but not copying
 
 If this dry run looks good, initiate the transfer with:
 
 ```bash
-rclone copy -v SI-Hydra:/store/public/oceandna/raw_sequence_metadata . 
+rclone copy -v SI-Hydra:/store/nmnh_ocean_dna/public/raw_sequence_metadata . 
 ```
 
 The metadata should copy quickly. Now let's do the same process for the sequence data.
 
 ```bash
 cd /Volumes/nmnh-ocean-dna/Hydra_backup/store/raw_sequence_data
-rclone copy -v -n SI-Hydra:/store/public/oceandna/raw_sequence_data . 
+rclone copy -v -n SI-Hydra:/store/nmnh_ocean_dna/public/raw_sequence_data . 
 ```
 
 And again, if the dry run looks good, proceed with transfer.
 
 ```bash
-rclone copy -v SI-Hydra:/store/public/oceandna/raw_sequence_data . 
+rclone copy -v SI-Hydra:/store/nmnh_ocean_dna/public/raw_sequence_data . 
 ```
 
 If either transfer is interrupted, simply rerun the command to resume.
