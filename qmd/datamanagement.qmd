@@ -33,7 +33,7 @@ The Ocean DNA group has access to the following disk storage. Please be mindful 
 ```{mermaid}
 graph TD;
 
-  GenoHub[**GenoHub**]
+  GenoHub[**GenoHub/LAB**]
   Metadata[**Map File**]
   Analyses(Run quality/adapter trimming, mitogenome assembly, etc)
   Scratch[(**Hydra Scratch**)]
@@ -85,9 +85,11 @@ These instructions only pertain to raw sequence data.
 We do not have a standardized data management protocol for other data such as trimmed reads or analysis results.
 :::
 
-### STEP 1: download from GenoHub
+### STEP 1: download data
 
-GenoHub will provide a link with instructions to download the raw sequence data. 
+#### GenoHub
+
+If your sequencing was done by GenoHub, you should receive a link with instructions to download the raw sequence data. 
 The data should be demultiplexed, compressed sequence reads in FASTQ format (i.e. files should end in “.fastq.gz” or “.fq.gz”).
 
 You can download sequence data directly from GenoHub to Hydra using the AWS command line interface. 
@@ -115,11 +117,15 @@ aws s3 sync s3://genohubXXXXXXX /full/path/to/you/download/directory
 We recommend downloading sequence data to `/scratch/public/genomics/YOUR_USER_ID`. This directory has the fastest read/write speeds and the largest storage quota.
 :::
 
+#### LAB
+
+If your sequencing was done at LAB....
+
 ### STEP 2: create the sequence data map file
 
 The map file, a comma-separated values (CSV) file, lists all samples in the GenoHub project and is crucial for ensuring your data is both backed up and usable.
 
-Please use the following naming convention for your map file:
+If you sequenced with GenoHub, please use the following naming convention for your map file:
 
 ```
 genohub-{GENOHUB_PROJECT_NUMBER}_{PROJECT_DESCRIPTION}_mapfile.csv
@@ -129,13 +135,24 @@ For example: `genohub-8459898_Vietnam_mapfile.csv`
 
 Where "8459898" is the GenoHub project number and "Vietnam" is the description given by the project owner. 
 
+If you sequenced with the NMNH LAB, please use the following naming convention for your map file:
+
+```
+LAB-{LAB_SEQUENCING_ID}_{PROJECT_DESCRIPTION}_mapfile.csv
+```
+
+For example: `LAB-240925VL008474AAG5MNMM5_IRL-2024-07_mapfile.csv`
+
+Where "240925VL008474AAG5MNMM5" is the LAB sequencing run ID and and "IRL-2024-07" is the description given by the project owner. 
+If you do not know the LAB sequencing run ID, please contact LAB personnel.
+
 ::: {.callout-warning}
 Do not include underscores or spaces in the project description.
 :::
 
 The first five columns of your map file must be:
 
-- ***ID:*** GenoHub sample name. For example:
+- ***ID:*** GenoHub/LAB sample name. For example:
   - `I-0025-99AD-1N1`
 - ***R1:*** Read 1 FASTQ file name. For example:
   - `I-0025-99AD-1N1_1.fastq.gz`
@@ -172,7 +189,7 @@ The Ocean DNA Store directory on Hydra contains two subdirectories where you sho
 Each directory within `raw_sequence_data` should contain the results of a GenoHub sequencing project. 
 To save disk space, please ensure that all sequence files are compressed (e.g. `sequence1.fastq.gz`).
 
-Please use the following naming convention for your directories:
+For GenoHub sequencing projects, please use the following naming convention for your directories:
 
 ```
 genohub-{GENOHUB_PROJECT_NUMBER}_{PROJECT_DESCRIPTION}
@@ -181,6 +198,17 @@ genohub-{GENOHUB_PROJECT_NUMBER}_{PROJECT_DESCRIPTION}
 For example: "genohub-8459898_Vietnam"
 
 Where "8459898" is the GenoHub project number and "Vietnam" is the description given by the project owner.
+
+For LAB sequencing projects, please use the following naming convention for your directories:
+
+```
+LAB-{LAB_SEQUENCING_ID}_{PROJECT_DESCRIPTION}_mapfile.csv
+```
+
+For example: "LAB-240925VL008474AAG5MNMM5_IRL-2024-07"
+
+Where "240925VL008474AAG5MNMM5" is the LAB sequencing run ID and and "IRL-2024-07" is the description given by the project owner. 
+If you do not know the LAB sequencing run ID, please contact LAB personnel.
 
 ::: {.callout-warning}
 Do not include underscores or spaces in the project description.
@@ -264,13 +292,13 @@ This will open a new finder window. The P drive structure is as follows:
 
 There are other directories, but these are the relevant ones for our data management purposes. 
 
-Prior to copying new map files to the P drive, you should make a backup of the existing directory. Open the `store` directory in the terminal and run the following commands. For `MONTH_DAY_YEAR`, please use the format `09_26_25`.
+Prior to copying new map files to the P drive, you should make a backup of the existing directory. Open the `store` directory in the terminal and run the following commands. For `YEAR-MONTH-DAY`, please use the format `2025-09-26`.
 
 ```bash
-cp -r raw_sequence_metadata raw_sequence_metadata_backups/raw_sequence_metadata_MONTH_DAY_YEAR
+cp -r raw_sequence_metadata raw_sequence_metadata_backups/raw_sequence_metadata_YEAR-MONTH-DAY
 cd raw_sequence_metadata_backups
-tar -zcvf raw_sequence_metadata_MONTH_DAY_YEAR.tar.gz raw_sequence_metadata_MONTH_DAY_YEAR
-rm -r raw_sequence_metadata_MONTH_DAY_YEAR
+tar -zcvf raw_sequence_metadata_YEAR-MONTH-DAY.tar.gz raw_sequence_metadata_YEAR-MONTH-DAY
+rm -r raw_sequence_metadata_YEAR-MONTH-DAY
 ```
 
 We will use Rclone to copy data from Hydra directly to the P drive. Installation instructions are available [here](https://rclone.org/install/).

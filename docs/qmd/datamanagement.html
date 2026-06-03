@@ -283,7 +283,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#data-management-flowchart" id="toc-data-management-flowchart" class="nav-link" data-scroll-target="#data-management-flowchart">Data management flowchart</a></li>
   <li><a href="#step-by-step-data-management-workflow" id="toc-step-by-step-data-management-workflow" class="nav-link" data-scroll-target="#step-by-step-data-management-workflow">Step-by-step data management workflow</a>
   <ul class="collapse">
-  <li><a href="#step-1-download-from-genohub" id="toc-step-1-download-from-genohub" class="nav-link" data-scroll-target="#step-1-download-from-genohub">STEP 1: download from GenoHub</a></li>
+  <li><a href="#step-1-download-data" id="toc-step-1-download-data" class="nav-link" data-scroll-target="#step-1-download-data">STEP 1: download data</a></li>
   <li><a href="#step-2-create-the-sequence-data-map-file" id="toc-step-2-create-the-sequence-data-map-file" class="nav-link" data-scroll-target="#step-2-create-the-sequence-data-map-file">STEP 2: create the sequence data map file</a></li>
   <li><a href="#step-3-move-sequence-data-and-map-file-to-hydra-store" id="toc-step-3-move-sequence-data-and-map-file-to-hydra-store" class="nav-link" data-scroll-target="#step-3-move-sequence-data-and-map-file-to-hydra-store">STEP 3: move sequence data and map file to Hydra Store</a></li>
   <li><a href="#step-4-backup-hydra-store-to-p-drive" id="toc-step-4-backup-hydra-store-to-p-drive" class="nav-link" data-scroll-target="#step-4-backup-hydra-store-to-p-drive">STEP 4: backup Hydra Store to P drive</a></li>
@@ -344,7 +344,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <pre class="mermaid mermaid-js">graph TD;
 
-  GenoHub[**GenoHub**]
+  GenoHub[**GenoHub/LAB**]
   Metadata[**Map File**]
   Analyses(Run quality/adapter trimming, mitogenome assembly, etc)
   Scratch[(**Hydra Scratch**)]
@@ -408,9 +408,11 @@ Note
 <p>These instructions only pertain to raw sequence data. We do not have a standardized data management protocol for other data such as trimmed reads or analysis results.</p>
 </div>
 </div>
-<section id="step-1-download-from-genohub" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-download-from-genohub">STEP 1: download from GenoHub</h3>
-<p>GenoHub will provide a link with instructions to download the raw sequence data. The data should be demultiplexed, compressed sequence reads in FASTQ format (i.e.&nbsp;files should end in “.fastq.gz” or “.fq.gz”).</p>
+<section id="step-1-download-data" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-download-data">STEP 1: download data</h3>
+<section id="genohub" class="level4">
+<h4 class="anchored" data-anchor-id="genohub">GenoHub</h4>
+<p>If your sequencing was done by GenoHub, you should receive a link with instructions to download the raw sequence data. The data should be demultiplexed, compressed sequence reads in FASTQ format (i.e.&nbsp;files should end in “.fastq.gz” or “.fq.gz”).</p>
 <p>You can download sequence data directly from GenoHub to Hydra using the AWS command line interface. First, load the AWS module and run configuration. Enter the information provided on the GenoHub download instructions page when prompted.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load tools/awscli/2.15.27</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> configure</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -432,13 +434,22 @@ Note
 </div>
 </div>
 </section>
+<section id="lab" class="level4">
+<h4 class="anchored" data-anchor-id="lab">LAB</h4>
+<p>If your sequencing was done at LAB….</p>
+</section>
+</section>
 <section id="step-2-create-the-sequence-data-map-file" class="level3">
 <h3 class="anchored" data-anchor-id="step-2-create-the-sequence-data-map-file">STEP 2: create the sequence data map file</h3>
 <p>The map file, a comma-separated values (CSV) file, lists all samples in the GenoHub project and is crucial for ensuring your data is both backed up and usable.</p>
-<p>Please use the following naming convention for your map file:</p>
+<p>If you sequenced with GenoHub, please use the following naming convention for your map file:</p>
 <pre><code>genohub-{GENOHUB_PROJECT_NUMBER}_{PROJECT_DESCRIPTION}_mapfile.csv</code></pre>
 <p>For example: <code>genohub-8459898_Vietnam_mapfile.csv</code></p>
 <p>Where “8459898” is the GenoHub project number and “Vietnam” is the description given by the project owner.</p>
+<p>If you sequenced with the NMNH LAB, please use the following naming convention for your map file:</p>
+<pre><code>LAB-{LAB_SEQUENCING_ID}_{PROJECT_DESCRIPTION}_mapfile.csv</code></pre>
+<p>For example: <code>LAB-240925VL008474AAG5MNMM5_IRL-2024-07_mapfile.csv</code></p>
+<p>Where “240925VL008474AAG5MNMM5” is the LAB sequencing run ID and and “IRL-2024-07” is the description given by the project owner. If you do not know the LAB sequencing run ID, please contact LAB personnel.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -454,7 +465,7 @@ Warning
 </div>
 <p>The first five columns of your map file must be:</p>
 <ul>
-<li><strong><em>ID:</em></strong> GenoHub sample name. For example:
+<li><strong><em>ID:</em></strong> GenoHub/LAB sample name. For example:
 <ul>
 <li><code>I-0025-99AD-1N1</code></li>
 </ul></li>
@@ -513,10 +524,14 @@ Important
 <p>The Ocean DNA Store directory on Hydra contains two subdirectories where you should upload your data.</p>
 <p><span style="font-size: 20px;"> <strong>1. /store/nmnh_ocean_dna/raw_sequence_data</strong> </span></p>
 <p>Each directory within <code>raw_sequence_data</code> should contain the results of a GenoHub sequencing project. To save disk space, please ensure that all sequence files are compressed (e.g.&nbsp;<code>sequence1.fastq.gz</code>).</p>
-<p>Please use the following naming convention for your directories:</p>
+<p>For GenoHub sequencing projects, please use the following naming convention for your directories:</p>
 <pre><code>genohub-{GENOHUB_PROJECT_NUMBER}_{PROJECT_DESCRIPTION}</code></pre>
 <p>For example: “genohub-8459898_Vietnam”</p>
 <p>Where “8459898” is the GenoHub project number and “Vietnam” is the description given by the project owner.</p>
+<p>For LAB sequencing projects, please use the following naming convention for your directories:</p>
+<pre><code>LAB-{LAB_SEQUENCING_ID}_{PROJECT_DESCRIPTION}_mapfile.csv</code></pre>
+<p>For example: “LAB-240925VL008474AAG5MNMM5_IRL-2024-07”</p>
+<p>Where “240925VL008474AAG5MNMM5” is the LAB sequencing run ID and and “IRL-2024-07” is the description given by the project owner. If you do not know the LAB sequencing run ID, please contact LAB personnel.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -531,8 +546,8 @@ Warning
 </div>
 </div>
 <p>To create a new directory for your project:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /store/nmnh_ocean_dna/raw_sequence_data</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> genohub-XXXXXX_MY-PROJECT-DESCRIPTION</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /store/nmnh_ocean_dna/raw_sequence_data</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> genohub-XXXXXX_MY-PROJECT-DESCRIPTION</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can now copy your sequence data to this directory. There are many ways to copy data, including:</p>
 <ul>
 <li>“Drag and drop” with a file browser (not recommended)</li>
@@ -551,15 +566,15 @@ Warning
 <ul>
 <li>Perform a “dry run” (list files but do not copy):</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> <span class="at">-n</span> /PATH/TO/SOURCE /PATH/TO/DESTINATION</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> <span class="at">-n</span> /PATH/TO/SOURCE /PATH/TO/DESTINATION</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Copy files:</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> /PATH/TO/SOURCE /PATH/TO/DESTINATION</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> /PATH/TO/SOURCE /PATH/TO/DESTINATION</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Copy only files that end in “.fastq.gz”</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> <span class="at">--include</span> <span class="st">"*.fastq.gz"</span> /PATH/TO/SOURCE /PATH/TO/DESTINATION</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> <span class="at">--include</span> <span class="st">"*.fastq.gz"</span> /PATH/TO/SOURCE /PATH/TO/DESTINATION</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
 <li><a href="https://www.globus.org/">Globus</a>
 <ul>
@@ -596,11 +611,11 @@ Warning
 </ul></li>
 </ul>
 <p>There are other directories, but these are the relevant ones for our data management purposes.</p>
-<p>Prior to copying new map files to the P drive, you should make a backup of the existing directory. Open the <code>store</code> directory in the terminal and run the following commands. For <code>MONTH_DAY_YEAR</code>, please use the format <code>09_26_25</code>.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> raw_sequence_metadata raw_sequence_metadata_backups/raw_sequence_metadata_MONTH_DAY_YEAR</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> raw_sequence_metadata_backups</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-zcvf</span> raw_sequence_metadata_MONTH_DAY_YEAR.tar.gz raw_sequence_metadata_MONTH_DAY_YEAR</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> raw_sequence_metadata_MONTH_DAY_YEAR</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Prior to copying new map files to the P drive, you should make a backup of the existing directory. Open the <code>store</code> directory in the terminal and run the following commands. For <code>YEAR-MONTH-DAY</code>, please use the format <code>2025-09-26</code>.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> raw_sequence_metadata raw_sequence_metadata_backups/raw_sequence_metadata_YEAR-MONTH-DAY</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> raw_sequence_metadata_backups</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-zcvf</span> raw_sequence_metadata_YEAR-MONTH-DAY.tar.gz raw_sequence_metadata_YEAR-MONTH-DAY</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> raw_sequence_metadata_YEAR-MONTH-DAY</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We will use Rclone to copy data from Hydra directly to the P drive. Installation instructions are available <a href="https://rclone.org/install/">here</a>.</p>
 <p>If this is the first time using Rclone to connect to Hydra, run <code>rclone config</code>. Select the following options:</p>
 <ul>
@@ -619,20 +634,20 @@ Warning
 </blockquote>
 <p>Note that after Rclone copies a file, it will calculate and compare checksums to ensure successful file transfer.</p>
 <p>First we’ll copy the metadata. On the command line, run the following:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Volumes/nmnh-ocean-dna/Hydra_backup/store/raw_sequence_metadata</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> <span class="at">-n</span> SI-Hydra:/store/public/oceandna/raw_sequence_metadata . </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Volumes/nmnh-ocean-dna/Hydra_backup/store/raw_sequence_metadata</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> <span class="at">-n</span> SI-Hydra:/store/public/oceandna/raw_sequence_metadata . </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-v</code> tells Rclone to produce verbose output, <code>-c</code> tell Rclone to use checksums, <code>-n</code> tells Rclone to perform a “dry run”, listing files and sizes but not copying</p>
 <p>If this dry run looks good, initiate the transfer with:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> SI-Hydra:/store/public/oceandna/raw_sequence_metadata . </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> SI-Hydra:/store/public/oceandna/raw_sequence_metadata . </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The metadata should copy quickly. Now let’s do the same process for the sequence data.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Volumes/nmnh-ocean-dna/Hydra_backup/store/raw_sequence_data</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> <span class="at">-n</span> SI-Hydra:/store/public/oceandna/raw_sequence_data . </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Volumes/nmnh-ocean-dna/Hydra_backup/store/raw_sequence_data</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> <span class="at">-n</span> SI-Hydra:/store/public/oceandna/raw_sequence_data . </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And again, if the dry run looks good, proceed with transfer.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> SI-Hydra:/store/public/oceandna/raw_sequence_data . </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> copy <span class="at">-v</span> SI-Hydra:/store/public/oceandna/raw_sequence_data . </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If either transfer is interrupted, simply rerun the command to resume.</p>
 <p><strong>Important:</strong> after backing up sequence data to the P drive, the data manager should make all of the FASTQ files on Store read-only. This will mitigate the risk of accidental overwrite or deletion.</p>
 <p>Run the following command in the relevant sequence data folders on Store. This will make all <code>fastq.gz</code> files read-only..</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 444 <span class="pp">*</span>.fastq.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 444 <span class="pp">*</span>.fastq.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>More info about <code>chmod</code> can be found <a href="https://chmod-calculator.com/">here</a>.</p>
 
 
