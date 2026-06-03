@@ -456,34 +456,30 @@ Note
 </section>
 <section id="step-2-create-the-sequence-data-map-file" class="level3">
 <h3 class="anchored" data-anchor-id="step-2-create-the-sequence-data-map-file">STEP 2: create the sequence data map file</h3>
-<p>The map file, a comma-separated values (CSV) file, lists all samples in the GenoHub project and is crucial for ensuring your data is both backed up and usable.</p>
+<p>The map file is a comma-separated values (CSV) file that lists all samples in the sequencing project. It is crucial for ensuring your data are interpretable.</p>
 <section id="genohub-1" class="level4">
 <h4 class="anchored" data-anchor-id="genohub-1">GenoHub</h4>
 <p>If you sequenced with GenoHub, please use the following naming convention for your map file:</p>
-<pre><code>genohub-{GENOHUB_PROJECT_NUMBER}_{PROJECT_DESCRIPTION}_mapfile.csv</code></pre>
+<pre><code>genohub-{GENOHUB-PROJECT-NUMBER}_{PROJECT-DESCRIPTION}_mapfile.csv</code></pre>
 <p>For example: <code>genohub-8459898_Vietnam_mapfile.csv</code></p>
-<p>Where “8459898” is the GenoHub project number and “Vietnam” is the description given by the project owner.</p>
+<p>Where “8459898” is the GenoHub project number and “Vietnam” is your description of the sequencing project. <strong><em>Do not include underscores or spaces in the project description.</em></strong></p>
 </section>
 <section id="nmnh-lab-1" class="level4">
 <h4 class="anchored" data-anchor-id="nmnh-lab-1">NMNH LAB</h4>
 <p>If you sequenced with the NMNH LAB, please use the following naming convention for your map file:</p>
-<pre><code>LAB-{LAB_RUN_NAME}_{PROJECT_DESCRIPTION}_mapfile.csv</code></pre>
+<pre><code>LAB-{LAB-RUN-NAME}_{PROJECT-DESCRIPTION}_mapfile.csv</code></pre>
 <p>For example: <code>LAB-240925VL008474AAG5MNMM5_IRL-2024-07_mapfile.csv</code></p>
-<p>Where “240925VL008474AAG5MNMM5” is the LAB sequencing run name (with underscores removed) and “IRL-2024-07” is your description of the sequencing project.</p>
+<p>Where “240925VL008474AAG5MNMM5” is the LAB sequencing run name (with underscores removed) and “IRL-2024-07” is your description of the sequencing project. <strong><em>Do not include underscores or spaces in the project description.</em></strong></p>
 <p>The sequencing run name can be found in the HTML report included in the Dropbox folder from LAB.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../qmd/images/LAB_run_name.png" class="img-fluid figure-img"></p>
+<figcaption>LAB sequencing run report</figcaption>
+</figure>
 </div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Do not include underscores or spaces in the project description.</p>
-</div>
-</div>
+</section>
+<section id="map-file-requirements" class="level4">
+<h4 class="anchored" data-anchor-id="map-file-requirements">Map file requirements</h4>
 <p>The first five columns of your map file must be:</p>
 <ul>
 <li><strong><em>ID:</em></strong> GenoHub/LAB sample name. For example:
@@ -549,30 +545,26 @@ Important
 <section id="genohub-2" class="level4">
 <h4 class="anchored" data-anchor-id="genohub-2">GenoHub</h4>
 <p>For GenoHub sequencing projects, please use the following naming convention for your directories:</p>
-<pre><code>genohub-{GENOHUB_PROJECT_NUMBER}_{PROJECT_DESCRIPTION}</code></pre>
+<pre><code>genohub-{GENOHUB-PROJECT-NUMBER}_{PROJECT-DESCRIPTION}</code></pre>
 <p>For example: “genohub-8459898_Vietnam”</p>
-<p>Where “8459898” is the GenoHub project number and “Vietnam” is the description given by the project owner.</p>
+<p>Where “8459898” is the GenoHub project number and “Vietnam” is your description of the sequencing project. <strong><em>Do not include underscores or spaces in the project description.</em></strong></p>
 </section>
-<section id="lab" class="level4">
-<h4 class="anchored" data-anchor-id="lab">LAB</h4>
+<section id="nmnh-lab-2" class="level4">
+<h4 class="anchored" data-anchor-id="nmnh-lab-2">NMNH LAB</h4>
 <p>For LAB sequencing projects, please use the following naming convention for your directories:</p>
-<pre><code>LAB-{LAB_RUN_NAME}_{PROJECT_DESCRIPTION}</code></pre>
+<pre><code>LAB-{LAB-RUN-NAME}_{PROJECT-DESCRIPTION}</code></pre>
 <p>For example: <code>LAB-240925VL008474AAG5MNMM5_IRL-2024-07</code></p>
-<p>Where “240925VL008474AAG5MNMM5” is the LAB sequencing run name (with underscores removed) and “IRL-2024-07” is your description of the sequencing project.</p>
+<p>Where “240925VL008474AAG5MNMM5” is the LAB sequencing run name (with underscores removed) and “IRL-2024-07” is your description of the sequencing project. <strong><em>Do not include underscores or spaces in the project description.</em></strong></p>
 <p>The sequencing run name can be found in the HTML report included in the Dropbox folder from LAB.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../qmd/images/LAB_run_name.png" class="img-fluid figure-img"></p>
+<figcaption>LAB sequencing run report</figcaption>
+</figure>
 </div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Do not include underscores or spaces in the project description.</p>
-</div>
-</div>
+</section>
+<section id="the-project-directory" class="level4">
+<h4 class="anchored" data-anchor-id="the-project-directory">The project directory</h4>
 <p>To create a new directory for your project:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /store/nmnh_ocean_dna/public/raw_sequence_data</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> genohub-XXXXXX_MY-PROJECT-DESCRIPTION</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

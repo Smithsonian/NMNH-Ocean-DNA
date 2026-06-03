@@ -148,37 +148,38 @@ rclone copy -v --include "*.fastq.gz" DROPBOX_REMOTE_NAME:/PATH/TO/DATA/ON/DROPB
 
 ### STEP 2: create the sequence data map file
 
-The map file, a comma-separated values (CSV) file, lists all samples in the GenoHub project and is crucial for ensuring your data is both backed up and usable.
+The map file is a comma-separated values (CSV) file that lists all samples in the sequencing project. It is crucial for ensuring your data are interpretable.
 
 #### GenoHub
 
 If you sequenced with GenoHub, please use the following naming convention for your map file:
 
 ```
-genohub-{GENOHUB_PROJECT_NUMBER}_{PROJECT_DESCRIPTION}_mapfile.csv
+genohub-{GENOHUB-PROJECT-NUMBER}_{PROJECT-DESCRIPTION}_mapfile.csv
 ```
 
 For example: `genohub-8459898_Vietnam_mapfile.csv`
 
-Where "8459898" is the GenoHub project number and "Vietnam" is the description given by the project owner. 
+Where "8459898" is the GenoHub project number and "Vietnam" is your description of the sequencing project. ***Do not include underscores or spaces in the project description.***
+
 
 #### NMNH LAB
 
 If you sequenced with the NMNH LAB, please use the following naming convention for your map file:
 
 ```
-LAB-{LAB_RUN_NAME}_{PROJECT_DESCRIPTION}_mapfile.csv
+LAB-{LAB-RUN-NAME}_{PROJECT-DESCRIPTION}_mapfile.csv
 ```
 
 For example: `LAB-240925VL008474AAG5MNMM5_IRL-2024-07_mapfile.csv`
 
-Where "240925VL008474AAG5MNMM5" is the LAB sequencing run name (with underscores removed) and "IRL-2024-07" is your description of the sequencing project. 
+Where "240925VL008474AAG5MNMM5" is the LAB sequencing run name (with underscores removed) and "IRL-2024-07" is your description of the sequencing project. ***Do not include underscores or spaces in the project description.***
 
 The sequencing run name can be found in the HTML report included in the Dropbox folder from LAB. 
 
-::: {.callout-warning}
-Do not include underscores or spaces in the project description.
-:::
+![LAB sequencing run report](/qmd/images/LAB_run_name.png)
+
+#### Map file requirements
 
 The first five columns of your map file must be:
 
@@ -224,30 +225,30 @@ To save disk space, please ensure that all sequence files are compressed (e.g. `
 For GenoHub sequencing projects, please use the following naming convention for your directories:
 
 ```
-genohub-{GENOHUB_PROJECT_NUMBER}_{PROJECT_DESCRIPTION}
+genohub-{GENOHUB-PROJECT-NUMBER}_{PROJECT-DESCRIPTION}
 ```
 
 For example: "genohub-8459898_Vietnam"
 
-Where "8459898" is the GenoHub project number and "Vietnam" is the description given by the project owner.
+Where "8459898" is the GenoHub project number and "Vietnam" is your description of the sequencing project. ***Do not include underscores or spaces in the project description.***
 
-#### LAB
+#### NMNH LAB
 
 For LAB sequencing projects, please use the following naming convention for your directories:
 
 ```
-LAB-{LAB_RUN_NAME}_{PROJECT_DESCRIPTION}
+LAB-{LAB-RUN-NAME}_{PROJECT-DESCRIPTION}
 ```
 
 For example: `LAB-240925VL008474AAG5MNMM5_IRL-2024-07`
 
-Where "240925VL008474AAG5MNMM5" is the LAB sequencing run name (with underscores removed) and "IRL-2024-07" is your description of the sequencing project. 
+Where "240925VL008474AAG5MNMM5" is the LAB sequencing run name (with underscores removed) and "IRL-2024-07" is your description of the sequencing project. ***Do not include underscores or spaces in the project description.***
 
 The sequencing run name can be found in the HTML report included in the Dropbox folder from LAB. 
 
-::: {.callout-warning}
-Do not include underscores or spaces in the project description.
-:::
+![LAB sequencing run report](/qmd/images/LAB_run_name.png)
+
+#### The project directory
 
 To create a new directory for your project:
 
