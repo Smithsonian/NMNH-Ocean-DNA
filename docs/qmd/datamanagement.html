@@ -410,16 +410,6 @@ Note
 </div>
 <section id="step-1-download-data" class="level3">
 <h3 class="anchored" data-anchor-id="step-1-download-data">STEP 1: download data</h3>
-<section id="genohub" class="level4">
-<h4 class="anchored" data-anchor-id="genohub">GenoHub</h4>
-<p>If your sequencing was done by GenoHub, you should receive a link with instructions to download the raw sequence data. The data should be demultiplexed, compressed sequence reads in FASTQ format (i.e.&nbsp;files should end in “.fastq.gz” or “.fq.gz”).</p>
-<p>You can download sequence data directly from GenoHub to Hydra using the AWS command line interface. First, load the AWS module and run configuration. Enter the information provided on the GenoHub download instructions page when prompted.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load tools/awscli/2.15.27</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> configure</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Now you can access the AWS storage bucket containing your sequence data. To list the bucket contents prior to downloading, run the following, replacing “XXXXXX” with your GenoHub project number.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> s3 ls s3://genohubXXXXXX</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Run the following command to download your data. Replace “XXXXXX” with your GenoHub project number and specify the path to your desired download location.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> s3 sync s3://genohubXXXXXXX /full/path/to/you/download/directory</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -430,9 +420,19 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>We recommend downloading sequence data to <code>/scratch/public/genomics/YOUR_USER_ID</code>. This directory has the fastest read/write speeds and the largest storage quota.</p>
+<p>We recommend initially downloading sequence data to <code>/scratch/public/genomics/YOUR_USER_ID</code>. This directory has the fastest read/write speeds and the largest storage quota. From there, you can move the sequence data to the appropriate location on Store.</p>
 </div>
 </div>
+<section id="genohub" class="level4">
+<h4 class="anchored" data-anchor-id="genohub">GenoHub</h4>
+<p>If your sequencing was done by GenoHub, you should receive a link with instructions to download the raw sequence data. The data should be demultiplexed, compressed sequence reads in FASTQ format (i.e.&nbsp;files should end in “.fastq.gz” or “.fq.gz”).</p>
+<p>You can download sequence data directly from GenoHub to Hydra using the AWS command line interface. First, load the AWS module and run configuration. Enter the information provided on the GenoHub download instructions page when prompted.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load tools/awscli/2.15.27</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> configure</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now you can access the AWS storage bucket containing your sequence data. To list the bucket contents prior to downloading, run the following, replacing “XXXXXX” with your GenoHub project number.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> s3 ls s3://genohubXXXXXX</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Run the following command to download your data. Replace “XXXXXX” with your GenoHub project number and specify the path to your desired download location.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> s3 sync s3://genohubXXXXXXX /full/path/to/you/download/directory</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="lab" class="level4">
 <h4 class="anchored" data-anchor-id="lab">LAB</h4>

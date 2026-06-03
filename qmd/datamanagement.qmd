@@ -87,6 +87,10 @@ We do not have a standardized data management protocol for other data such as tr
 
 ### STEP 1: download data
 
+::: {.callout-note}
+We recommend initially downloading sequence data to `/scratch/public/genomics/YOUR_USER_ID`. This directory has the fastest read/write speeds and the largest storage quota. From there, you can move the sequence data to the appropriate location on Store.
+:::
+
 #### GenoHub
 
 If your sequencing was done by GenoHub, you should receive a link with instructions to download the raw sequence data. 
@@ -113,9 +117,6 @@ Run the following command to download your data. Replace "XXXXXX" with your Geno
 ```bash
 aws s3 sync s3://genohubXXXXXXX /full/path/to/you/download/directory
 ```
-::: {.callout-note}
-We recommend downloading sequence data to `/scratch/public/genomics/YOUR_USER_ID`. This directory has the fastest read/write speeds and the largest storage quota.
-:::
 
 #### LAB
 
