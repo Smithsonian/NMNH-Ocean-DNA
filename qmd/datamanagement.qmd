@@ -126,6 +126,8 @@ If your sequencing was done at LAB....
 
 The map file, a comma-separated values (CSV) file, lists all samples in the GenoHub project and is crucial for ensuring your data is both backed up and usable.
 
+#### GenoHub
+
 If you sequenced with GenoHub, please use the following naming convention for your map file:
 
 ```
@@ -135,6 +137,8 @@ genohub-{GENOHUB_PROJECT_NUMBER}_{PROJECT_DESCRIPTION}_mapfile.csv
 For example: `genohub-8459898_Vietnam_mapfile.csv`
 
 Where "8459898" is the GenoHub project number and "Vietnam" is the description given by the project owner. 
+
+#### LAB
 
 If you sequenced with the NMNH LAB, please use the following naming convention for your map file:
 
@@ -187,8 +191,10 @@ The Ocean DNA Store directory on Hydra contains two subdirectories where you sho
 **1. /store/nmnh_ocean_dna/raw_sequence_data**
 </span>
 
-Each directory within `raw_sequence_data` should contain the results of a GenoHub sequencing project. 
+Each directory within `raw_sequence_data` should contain the results of a sequencing project. 
 To save disk space, please ensure that all sequence files are compressed (e.g. `sequence1.fastq.gz`).
+
+#### GenoHub
 
 For GenoHub sequencing projects, please use the following naming convention for your directories:
 
@@ -199,6 +205,8 @@ genohub-{GENOHUB_PROJECT_NUMBER}_{PROJECT_DESCRIPTION}
 For example: "genohub-8459898_Vietnam"
 
 Where "8459898" is the GenoHub project number and "Vietnam" is the description given by the project owner.
+
+#### LAB
 
 For LAB sequencing projects, please use the following naming convention for your directories:
 

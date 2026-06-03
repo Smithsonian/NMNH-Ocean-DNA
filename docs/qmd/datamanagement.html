@@ -442,10 +442,15 @@ Note
 <section id="step-2-create-the-sequence-data-map-file" class="level3">
 <h3 class="anchored" data-anchor-id="step-2-create-the-sequence-data-map-file">STEP 2: create the sequence data map file</h3>
 <p>The map file, a comma-separated values (CSV) file, lists all samples in the GenoHub project and is crucial for ensuring your data is both backed up and usable.</p>
+<section id="genohub-1" class="level4">
+<h4 class="anchored" data-anchor-id="genohub-1">GenoHub</h4>
 <p>If you sequenced with GenoHub, please use the following naming convention for your map file:</p>
 <pre><code>genohub-{GENOHUB_PROJECT_NUMBER}_{PROJECT_DESCRIPTION}_mapfile.csv</code></pre>
 <p>For example: <code>genohub-8459898_Vietnam_mapfile.csv</code></p>
 <p>Where “8459898” is the GenoHub project number and “Vietnam” is the description given by the project owner.</p>
+</section>
+<section id="lab-1" class="level4">
+<h4 class="anchored" data-anchor-id="lab-1">LAB</h4>
 <p>If you sequenced with the NMNH LAB, please use the following naming convention for your map file:</p>
 <pre><code>LAB-{LAB_SEQUENCING_ID}_{PROJECT_DESCRIPTION}_mapfile.csv</code></pre>
 <p>For example: <code>LAB-240925VL008474AAG5MNMM5_IRL-2024-07_mapfile.csv</code></p>
@@ -519,15 +524,21 @@ Important
 </div>
 </div>
 </section>
+</section>
 <section id="step-3-move-sequence-data-and-map-file-to-hydra-store" class="level3">
 <h3 class="anchored" data-anchor-id="step-3-move-sequence-data-and-map-file-to-hydra-store">STEP 3: move sequence data and map file to Hydra Store</h3>
 <p>The Ocean DNA Store directory on Hydra contains two subdirectories where you should upload your data.</p>
 <p><span style="font-size: 20px;"> <strong>1. /store/nmnh_ocean_dna/raw_sequence_data</strong> </span></p>
-<p>Each directory within <code>raw_sequence_data</code> should contain the results of a GenoHub sequencing project. To save disk space, please ensure that all sequence files are compressed (e.g.&nbsp;<code>sequence1.fastq.gz</code>).</p>
+<p>Each directory within <code>raw_sequence_data</code> should contain the results of a sequencing project. To save disk space, please ensure that all sequence files are compressed (e.g.&nbsp;<code>sequence1.fastq.gz</code>).</p>
+<section id="genohub-2" class="level4">
+<h4 class="anchored" data-anchor-id="genohub-2">GenoHub</h4>
 <p>For GenoHub sequencing projects, please use the following naming convention for your directories:</p>
 <pre><code>genohub-{GENOHUB_PROJECT_NUMBER}_{PROJECT_DESCRIPTION}</code></pre>
 <p>For example: “genohub-8459898_Vietnam”</p>
 <p>Where “8459898” is the GenoHub project number and “Vietnam” is the description given by the project owner.</p>
+</section>
+<section id="lab-2" class="level4">
+<h4 class="anchored" data-anchor-id="lab-2">LAB</h4>
 <p>For LAB sequencing projects, please use the following naming convention for your directories:</p>
 <pre><code>LAB-{LAB_SEQUENCING_ID}_{PROJECT_DESCRIPTION}_mapfile.csv</code></pre>
 <p>For example: “LAB-240925VL008474AAG5MNMM5_IRL-2024-07”</p>
@@ -587,6 +598,7 @@ Warning
 <p><span style="font-size: 20px;"> <strong>2. /store/nmnh_ocean_dna/raw_sequence_metadata</strong> </span></p>
 <p>Each directory in <code>raw_sequence_data</code> must be accompanied by a CSV map file in <code>raw_sequence_metadata</code>. The names of the map files should match the names of the sequence directories (with the addition of <code>_mapfile.csv</code>).</p>
 <p>You can upload the map file to <code>raw_sequence_metadata</code> using your favorite SCP or SFTP client (e.g.&nbsp;FileZilla, WinSCP, Cyberduck).</p>
+</section>
 </section>
 <section id="step-4-backup-hydra-store-to-p-drive" class="level3">
 <h3 class="anchored" data-anchor-id="step-4-backup-hydra-store-to-p-drive">STEP 4: backup Hydra Store to P drive</h3>
