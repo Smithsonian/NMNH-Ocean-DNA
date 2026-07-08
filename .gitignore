@@ -1,1 +1,8 @@
 /.quarto/
+
+# data_management_db: track tooling, ignore generated data + caches
+data_management_db/**/__pycache__/
+data_management_db/.pytest_cache/
+data_management_db/**/*.db
+data_management_db/**/*.sqlite
+data_management_db/**/*.md5
