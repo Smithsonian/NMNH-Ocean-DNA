@@ -6,4 +6,6 @@ data_management_db/.pytest_cache/
 data_management_db/**/*.db
 data_management_db/**/*.sqlite
 data_management_db/**/*.md5
+data_management_db/**/.taxonomy/
+data_management_db/**/taxonomy_review.csv
 .serena/project.yml
